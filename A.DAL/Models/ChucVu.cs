@@ -11,7 +11,6 @@ namespace A.DAL.Models
     {
         [Key]public Guid MaChucVu { get; set; }
         public string TenChucVu { get; set; }
-        public bool TrangThai { get; set; }
         public List<NhanVien> NhanVien { get; set;}
 
     }

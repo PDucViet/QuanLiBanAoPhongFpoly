@@ -18,7 +18,6 @@ namespace A.DAL.Models
         public DateTime DoBNV { get; set; }
         public string TaiKhoanNV { get; set; }
         public string MatKhauNV { get; set; }
-        public bool TrangThaiNV { get; set; }
         public ChucVu ChucVu { get; set; }
         public List<HoaDon> hoaDons { get; set; }
     }
