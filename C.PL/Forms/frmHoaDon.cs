@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace C.PL.Forms
+namespace C.PL.Views
 {
-    public partial class SanPham : Form
+    public partial class frmHoaDon : Form
     {
-        public SanPham()
+        public frmHoaDon()
         {
             InitializeComponent();
         }
