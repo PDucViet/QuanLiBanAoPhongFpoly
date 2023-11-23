@@ -10,9 +10,10 @@ namespace A.DAL.DBContext
 {
     public class MyDBContext : DbContext
     {
-        public MyDBContext(DbContextOptions options) : base(options)
-        {
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=QuanLiBanAoPhongDB;Trusted_Connection=True;TrustServerCertificate=True;");
+        //}
         public DbSet<ChucVu>chucVus { get; set; }
         public DbSet<NhanVien> nhanViens { get; set; }
         public DbSet<HoaDon> hoaDons { get; set; }
