@@ -1,6 +1,6 @@
 ﻿namespace C.PL.Forms
 {
-    partial class FrmNhanVien
+    partial class SanPham
     {
         /// <summary>
         /// Required designer variable.
@@ -28,17 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // FrmNhanVien
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1142, 551);
-            this.Name = "FrmNhanVien";
-            this.Text = "FrmNhanVien";
-            this.ResumeLayout(false);
-
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "SanPham";
         }
 
         #endregion
