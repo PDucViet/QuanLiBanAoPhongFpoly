@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace A.DAL.Models
 {
-    internal class Class1
+    internal class test
     {
     }
 }
