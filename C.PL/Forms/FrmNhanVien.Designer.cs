@@ -106,7 +106,7 @@
             // 
             // dtg_show
             // 
-            dtg_show.BackgroundColor = SystemColors.Control;
+            dtg_show.BackgroundColor = SystemColors.ActiveBorder;
             dtg_show.BorderStyle = BorderStyle.None;
             dtg_show.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtg_show.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8 });
