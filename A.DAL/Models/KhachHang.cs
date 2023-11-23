@@ -14,7 +14,6 @@ namespace A.DAL.Models
         public string SdtKH { get; set; }
         public string DiaChiKH { get; set; }
         public bool GioiTinhKH { get; set; }
-        public bool TrangThaiKH { get; set; }
         public List<HoaDon>hoaDons { get; set; }
     }
 }
