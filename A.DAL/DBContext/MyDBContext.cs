@@ -10,8 +10,9 @@ namespace A.DAL.DBContext
 {
     public class MyDBContext : DbContext
     {
-        public MyDBContext(DbContextOptions options) : base(options)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=QuanLiBanAoPhongDB;Trusted_Connection=True;TrustServerCertificate=True;");
         }
         public DbSet<ChucVu>chucVus { get; set; }
         public DbSet<NhanVien> nhanViens { get; set; }
@@ -24,5 +25,12 @@ namespace A.DAL.DBContext
         public DbSet<ChatLieu> chatLieus { get; set; }
         public DbSet<Size> sizes { get; set; }
         public DbSet<Mau> maus { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<AoPhongCT>()
+                .HasOne(s => s.HoaDonChiTiet)
+                .WithOne(s => s.AoPhongCT)
+                .HasForeignKey<HoaDonChiTiet>(s => s.MaAoPhongCT);
+        }
     }
 }

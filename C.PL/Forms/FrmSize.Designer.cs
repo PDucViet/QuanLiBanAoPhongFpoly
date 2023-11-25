@@ -53,17 +53,39 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(rb_KHD);
-            groupBox1.Controls.Add(rb_HoatDong);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(tbt_TenSize);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(56, 40);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(435, 242);
-            groupBox1.TabIndex = 9;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Thông tin size";
+            this.groupBox1.Controls.Add(this.rb_KHD);
+            this.groupBox1.Controls.Add(this.rb_HoatDong);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.tbt_TenSize);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(56, 40);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(435, 242);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thông tin size";
+            // 
+            // rb_KHD
+            // 
+            this.rb_KHD.AutoSize = true;
+            this.rb_KHD.Location = new System.Drawing.Point(306, 159);
+            this.rb_KHD.Name = "rb_KHD";
+            this.rb_KHD.Size = new System.Drawing.Size(91, 24);
+            this.rb_KHD.TabIndex = 6;
+            this.rb_KHD.TabStop = true;
+            this.rb_KHD.Text = "Hết hàng";
+            this.rb_KHD.UseVisualStyleBackColor = true;
+            // 
+            // rb_HoatDong
+            // 
+            this.rb_HoatDong.AutoSize = true;
+            this.rb_HoatDong.Location = new System.Drawing.Point(186, 159);
+            this.rb_HoatDong.Name = "rb_HoatDong";
+            this.rb_HoatDong.Size = new System.Drawing.Size(93, 24);
+            this.rb_HoatDong.TabIndex = 5;
+            this.rb_HoatDong.TabStop = true;
+            this.rb_HoatDong.Text = "Còn hàng";
+            this.rb_HoatDong.UseVisualStyleBackColor = true;
             // 
             // rb_KHD
             // 
@@ -98,40 +120,45 @@
             // 
             // tbt_TenSize
             // 
-            tbt_TenSize.Location = new Point(186, 101);
-            tbt_TenSize.Name = "tbt_TenSize";
-            tbt_TenSize.Size = new Size(211, 27);
-            tbt_TenSize.TabIndex = 3;
+            this.tbt_TenSize.Location = new System.Drawing.Point(186, 101);
+            this.tbt_TenSize.Name = "tbt_TenSize";
+            this.tbt_TenSize.Size = new System.Drawing.Size(211, 27);
+            this.tbt_TenSize.TabIndex = 3;
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(16, 102);
-            label2.Name = "label2";
-            label2.Size = new Size(63, 20);
-            label2.TabIndex = 1;
-            label2.Text = "Tên Size";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 102);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Tên Size";
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(dtgv_Size);
-            groupBox3.Location = new Point(59, 294);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(786, 330);
-            groupBox3.TabIndex = 11;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Danh sách size";
+            this.groupBox3.Controls.Add(this.dtgv_Size);
+            this.groupBox3.Location = new System.Drawing.Point(59, 294);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(786, 330);
+            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Danh sách size";
             // 
             // dtgv_Size
             // 
-            dtgv_Size.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgv_Size.Columns.AddRange(new DataGridViewColumn[] { Column2, Column3, Column4 });
-            dtgv_Size.Location = new Point(-3, 37);
-            dtgv_Size.Name = "dtgv_Size";
-            dtgv_Size.RowHeadersWidth = 51;
-            dtgv_Size.RowTemplate.Height = 29;
-            dtgv_Size.Size = new Size(789, 290);
-            dtgv_Size.TabIndex = 0;
+            this.dtgv_Size.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_Size.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column2,
+            this.Column3,
+            this.Column4});
+            this.dtgv_Size.Location = new System.Drawing.Point(-3, 37);
+            this.dtgv_Size.Name = "dtgv_Size";
+            this.dtgv_Size.RowHeadersWidth = 51;
+            this.dtgv_Size.RowTemplate.Height = 29;
+            this.dtgv_Size.Size = new System.Drawing.Size(789, 290);
+            this.dtgv_Size.TabIndex = 0;
+            // 
+            // Column2
             // 
             // Column2
             // 
@@ -156,75 +183,76 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(btn_thoat);
-            groupBox2.Controls.Add(btn_lamMoi);
-            groupBox2.Controls.Add(btb_CapNhat);
-            groupBox2.Controls.Add(btn_them);
-            groupBox2.Location = new Point(510, 40);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(335, 242);
-            groupBox2.TabIndex = 10;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Chức năng";
+            this.groupBox2.Controls.Add(this.btn_thoat);
+            this.groupBox2.Controls.Add(this.btn_lamMoi);
+            this.groupBox2.Controls.Add(this.btb_CapNhat);
+            this.groupBox2.Controls.Add(this.btn_them);
+            this.groupBox2.Location = new System.Drawing.Point(510, 40);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(335, 242);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Chức năng";
             // 
             // btn_thoat
             // 
-            btn_thoat.Image = (Image)resources.GetObject("btn_thoat.Image");
-            btn_thoat.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_thoat.Location = new Point(176, 104);
-            btn_thoat.Name = "btn_thoat";
-            btn_thoat.Size = new Size(138, 50);
-            btn_thoat.TabIndex = 3;
-            btn_thoat.Text = "Thoát";
-            btn_thoat.UseVisualStyleBackColor = true;
+            this.btn_thoat.Image = ((System.Drawing.Image)(resources.GetObject("btn_thoat.Image")));
+            this.btn_thoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_thoat.Location = new System.Drawing.Point(176, 104);
+            this.btn_thoat.Name = "btn_thoat";
+            this.btn_thoat.Size = new System.Drawing.Size(138, 50);
+            this.btn_thoat.TabIndex = 3;
+            this.btn_thoat.Text = "Thoát";
+            this.btn_thoat.UseVisualStyleBackColor = true;
             // 
             // btn_lamMoi
             // 
-            btn_lamMoi.Image = (Image)resources.GetObject("btn_lamMoi.Image");
-            btn_lamMoi.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_lamMoi.Location = new Point(21, 104);
-            btn_lamMoi.Name = "btn_lamMoi";
-            btn_lamMoi.Size = new Size(138, 50);
-            btn_lamMoi.TabIndex = 2;
-            btn_lamMoi.Text = "Làm mới";
-            btn_lamMoi.UseVisualStyleBackColor = true;
+            this.btn_lamMoi.Image = ((System.Drawing.Image)(resources.GetObject("btn_lamMoi.Image")));
+            this.btn_lamMoi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_lamMoi.Location = new System.Drawing.Point(21, 104);
+            this.btn_lamMoi.Name = "btn_lamMoi";
+            this.btn_lamMoi.Size = new System.Drawing.Size(138, 50);
+            this.btn_lamMoi.TabIndex = 2;
+            this.btn_lamMoi.Text = "Làm mới";
+            this.btn_lamMoi.UseVisualStyleBackColor = true;
             // 
             // btb_CapNhat
             // 
-            btb_CapNhat.ImageAlign = ContentAlignment.MiddleLeft;
-            btb_CapNhat.Location = new Point(176, 35);
-            btb_CapNhat.Name = "btb_CapNhat";
-            btb_CapNhat.Size = new Size(138, 50);
-            btb_CapNhat.TabIndex = 1;
-            btb_CapNhat.Text = "Cập nhật";
-            btb_CapNhat.UseVisualStyleBackColor = true;
+            this.btb_CapNhat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btb_CapNhat.Location = new System.Drawing.Point(176, 35);
+            this.btb_CapNhat.Name = "btb_CapNhat";
+            this.btb_CapNhat.Size = new System.Drawing.Size(138, 50);
+            this.btb_CapNhat.TabIndex = 1;
+            this.btb_CapNhat.Text = "Cập nhật";
+            this.btb_CapNhat.UseVisualStyleBackColor = true;
             // 
             // btn_them
             // 
-            btn_them.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_them.Location = new Point(21, 36);
-            btn_them.Name = "btn_them";
-            btn_them.Size = new Size(138, 50);
-            btn_them.TabIndex = 0;
-            btn_them.Text = "Thêm";
-            btn_them.UseVisualStyleBackColor = true;
+            this.btn_them.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_them.Location = new System.Drawing.Point(21, 36);
+            this.btn_them.Name = "btn_them";
+            this.btn_them.Size = new System.Drawing.Size(138, 50);
+            this.btn_them.TabIndex = 0;
+            this.btn_them.Text = "Thêm";
+            this.btn_them.UseVisualStyleBackColor = true;
             // 
             // FrmSize
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(937, 684);
-            Controls.Add(groupBox1);
-            Controls.Add(groupBox3);
-            Controls.Add(groupBox2);
-            Name = "FrmSize";
-            Text = "FrmSize";
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dtgv_Size).EndInit();
-            groupBox2.ResumeLayout(false);
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(937, 637);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Name = "FrmSize";
+            this.Text = "FrmSize";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_Size)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

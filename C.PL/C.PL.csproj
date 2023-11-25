@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\B.BUS\B.BUS.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Forms\FrmNhanVien.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
