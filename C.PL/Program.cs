@@ -1,4 +1,5 @@
 using C.PL.Forms;
+using C.PL.Views;
 
 namespace C.PL
 {
@@ -13,7 +14,7 @@ namespace C.PL
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new FrmSize());
+            Application.Run(new frmChucVu());
         }
     }
 }
