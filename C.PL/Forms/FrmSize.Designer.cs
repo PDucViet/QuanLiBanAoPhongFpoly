@@ -212,6 +212,58 @@
             this.btn_them.Text = "Thêm";
             this.btn_them.UseVisualStyleBackColor = true;
             // 
+            // Column4
+            // 
+            Column4.HeaderText = "Tình trạng";
+            Column4.MinimumWidth = 6;
+            Column4.Name = "Column4";
+            Column4.Width = 200;
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "Size";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            Column3.Width = 200;
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Mã Size";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
+            Column2.Width = 200;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(20, 163);
+            label3.Name = "label3";
+            label3.Size = new Size(75, 20);
+            label3.TabIndex = 4;
+            label3.Text = "Trạng thái";
+            // 
+            // rb_HoatDong
+            // 
+            rb_HoatDong.AutoSize = true;
+            rb_HoatDong.Location = new Point(186, 159);
+            rb_HoatDong.Name = "rb_HoatDong";
+            rb_HoatDong.Size = new Size(93, 24);
+            rb_HoatDong.TabIndex = 5;
+            rb_HoatDong.TabStop = true;
+            rb_HoatDong.Text = "Còn hàng";
+            rb_HoatDong.UseVisualStyleBackColor = true;
+            // 
+            // rb_KHD
+            // 
+            rb_KHD.AutoSize = true;
+            rb_KHD.Location = new Point(306, 159);
+            rb_KHD.Name = "rb_KHD";
+            rb_KHD.Size = new Size(91, 24);
+            rb_KHD.TabIndex = 6;
+            rb_KHD.TabStop = true;
+            rb_KHD.Text = "Hết hàng";
+            rb_KHD.UseVisualStyleBackColor = true;
+            // 
             // FrmSize
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -234,20 +286,20 @@
         #endregion
 
         private GroupBox groupBox1;
-        private RadioButton rb_KHD;
-        private RadioButton rb_HoatDong;
-        private Label label3;
         private TextBox tbt_TenSize;
         private Label label2;
         private GroupBox groupBox3;
         private DataGridView dtgv_Size;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
         private GroupBox groupBox2;
         private Button btn_thoat;
         private Button btn_lamMoi;
         private Button btb_CapNhat;
         private Button btn_them;
+        private RadioButton rb_KHD;
+        private RadioButton rb_HoatDong;
+        private Label label3;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
     }
 }
