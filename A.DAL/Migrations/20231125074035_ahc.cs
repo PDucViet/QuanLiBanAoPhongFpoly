@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace A.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class AddMyDB : Migration
+    public partial class ahc : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

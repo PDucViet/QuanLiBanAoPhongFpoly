@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace A.DAL.Migrations
 {
     [DbContext(typeof(MyDBContext))]
-    [Migration("20231123165017_AddMyDB")]
-    partial class AddMyDB
+    [Migration("20231125074035_ahc")]
+    partial class ahc
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
