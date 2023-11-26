@@ -59,11 +59,10 @@ namespace C.PL.Views
                     _ichucVuServices.Add(chucVu);
                     frmChucVu_Load(sender, e); MessageBox.Show("Thêm thành công");
                 }
-
             }
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
+            private void btnSua_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có muốn sửa không ?", "Thông báo", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
