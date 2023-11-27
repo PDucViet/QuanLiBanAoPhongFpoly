@@ -15,6 +15,7 @@ namespace A.DAL.Models
         public DateTime NgayTT { get; set; }
         public double GiamGia { get; set; }
         public double TongTien {  get; set; }
+        public string GhiChu { get; set; }
         public Guid NhanVienId { get; set; }
         [ForeignKey("NhanVienId")] public NhanVien NhanVien { get; set; }
         public Guid KhachHangId { get; set; }
