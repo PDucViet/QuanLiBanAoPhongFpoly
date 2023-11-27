@@ -148,6 +148,10 @@ namespace A.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("GhiChu")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("GiamGia")
                         .HasColumnType("float");
 
@@ -247,9 +251,6 @@ namespace A.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ChucVuID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("ChucVuId")
                         .HasColumnType("uniqueidentifier");
 
@@ -288,7 +289,7 @@ namespace A.DAL.Migrations
 
                     b.HasKey("MaNV");
 
-                    b.HasIndex("ChucVuID");
+                    b.HasIndex("ChucVuId");
 
                     b.ToTable("nhanViens");
                 });
@@ -396,7 +397,7 @@ namespace A.DAL.Migrations
                 {
                     b.HasOne("A.DAL.Models.ChucVu", "ChucVu")
                         .WithMany("NhanVien")
-                        .HasForeignKey("ChucVuID")
+                        .HasForeignKey("ChucVuId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

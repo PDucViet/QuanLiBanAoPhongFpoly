@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace A.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class OptimusPrime : Migration
+    public partial class SuaLaiLanN : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -103,8 +103,6 @@ namespace A.DAL.Migrations
                     table.PrimaryKey("PK_sizes", x => x.MaSize);
                 });
 
-            // ...
-
             migrationBuilder.CreateTable(
                 name: "nhanViens",
                 columns: table => new
@@ -131,9 +129,6 @@ namespace A.DAL.Migrations
                         principalColumn: "MaChucVu",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            // ...
-
 
             migrationBuilder.CreateTable(
                 name: "aoPhongCTs",
@@ -195,6 +190,7 @@ namespace A.DAL.Migrations
                     NgayTT = table.Column<DateTime>(type: "datetime2", nullable: false),
                     GiamGia = table.Column<double>(type: "float", nullable: false),
                     TongTien = table.Column<double>(type: "float", nullable: false),
+                    GhiChu = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NhanVienId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     KhachHangId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
@@ -287,9 +283,9 @@ namespace A.DAL.Migrations
                 column: "NhanVienId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_nhanViens_ChucVuID",
+                name: "IX_nhanViens_ChucVuId",
                 table: "nhanViens",
-                column: "ChucVuID");
+                column: "ChucVuId");
         }
 
         /// <inheritdoc />
