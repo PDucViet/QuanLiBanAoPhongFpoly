@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace A.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class ahc : Migration
+    public partial class OptimusPrime : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -103,6 +103,8 @@ namespace A.DAL.Migrations
                     table.PrimaryKey("PK_sizes", x => x.MaSize);
                 });
 
+            // ...
+
             migrationBuilder.CreateTable(
                 name: "nhanViens",
                 columns: table => new
@@ -112,21 +114,26 @@ namespace A.DAL.Migrations
                     GioiTinhNV = table.Column<bool>(type: "bit", nullable: false),
                     DiaChiNV = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SdtNV = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmailNV = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DoBNV = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TaiKhoanNV = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MatKhauNV = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ChucVuMaChucVu = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ChucVuId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TrangThai = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_nhanViens", x => x.MaNV);
                     table.ForeignKey(
-                        name: "FK_nhanViens_chucVus_ChucVuMaChucVu",
-                        column: x => x.ChucVuMaChucVu,
+                        name: "FK_nhanViens_chucVus_ChucVuId",
+                        column: x => x.ChucVuId,
                         principalTable: "chucVus",
                         principalColumn: "MaChucVu",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            // ...
+
 
             migrationBuilder.CreateTable(
                 name: "aoPhongCTs",
@@ -137,42 +144,43 @@ namespace A.DAL.Migrations
                     GiaNhap = table.Column<double>(type: "float", nullable: false),
                     GiaBan = table.Column<double>(type: "float", nullable: false),
                     TrangThaiAoPhongCT = table.Column<bool>(type: "bit", nullable: false),
-                    AoPhongMaAoPhong = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SizeMaSize = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    MauMaMau = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    HangSXMaHSX = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ChatLieuMaChatLieu = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    HoaDonCTId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AoPhongId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SizeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MauId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    HangSXId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ChatLieuId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_aoPhongCTs", x => x.MaAoPhongCT);
                     table.ForeignKey(
-                        name: "FK_aoPhongCTs_aoPhongs_AoPhongMaAoPhong",
-                        column: x => x.AoPhongMaAoPhong,
+                        name: "FK_aoPhongCTs_aoPhongs_AoPhongId",
+                        column: x => x.AoPhongId,
                         principalTable: "aoPhongs",
                         principalColumn: "MaAoPhong",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_aoPhongCTs_chatLieus_ChatLieuMaChatLieu",
-                        column: x => x.ChatLieuMaChatLieu,
+                        name: "FK_aoPhongCTs_chatLieus_ChatLieuId",
+                        column: x => x.ChatLieuId,
                         principalTable: "chatLieus",
                         principalColumn: "MaChatLieu",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_aoPhongCTs_hangSXes_HangSXMaHSX",
-                        column: x => x.HangSXMaHSX,
+                        name: "FK_aoPhongCTs_hangSXes_HangSXId",
+                        column: x => x.HangSXId,
                         principalTable: "hangSXes",
                         principalColumn: "MaHSX",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_aoPhongCTs_maus_MauMaMau",
-                        column: x => x.MauMaMau,
+                        name: "FK_aoPhongCTs_maus_MauId",
+                        column: x => x.MauId,
                         principalTable: "maus",
                         principalColumn: "MaMau",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_aoPhongCTs_sizes_SizeMaSize",
-                        column: x => x.SizeMaSize,
+                        name: "FK_aoPhongCTs_sizes_SizeId",
+                        column: x => x.SizeId,
                         principalTable: "sizes",
                         principalColumn: "MaSize",
                         onDelete: ReferentialAction.Cascade);
@@ -187,21 +195,21 @@ namespace A.DAL.Migrations
                     NgayTT = table.Column<DateTime>(type: "datetime2", nullable: false),
                     GiamGia = table.Column<double>(type: "float", nullable: false),
                     TongTien = table.Column<double>(type: "float", nullable: false),
-                    NhanVienMaNV = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    KhachHangMaKH = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    NhanVienId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    KhachHangId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_hoaDons", x => x.MaHD);
                     table.ForeignKey(
-                        name: "FK_hoaDons_khachHangs_KhachHangMaKH",
-                        column: x => x.KhachHangMaKH,
+                        name: "FK_hoaDons_khachHangs_KhachHangId",
+                        column: x => x.KhachHangId,
                         principalTable: "khachHangs",
                         principalColumn: "MaKH",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_hoaDons_nhanViens_NhanVienMaNV",
-                        column: x => x.NhanVienMaNV,
+                        name: "FK_hoaDons_nhanViens_NhanVienId",
+                        column: x => x.NhanVienId,
                         principalTable: "nhanViens",
                         principalColumn: "MaNV",
                         onDelete: ReferentialAction.Cascade);
@@ -212,76 +220,76 @@ namespace A.DAL.Migrations
                 columns: table => new
                 {
                     MaHdct = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    HoaDonMaHD = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    MaAoPhongCT = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    HoaDonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AoPhongCTId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_hoaDonChiTiets", x => x.MaHdct);
                     table.ForeignKey(
-                        name: "FK_hoaDonChiTiets_aoPhongCTs_MaAoPhongCT",
-                        column: x => x.MaAoPhongCT,
+                        name: "FK_hoaDonChiTiets_aoPhongCTs_AoPhongCTId",
+                        column: x => x.AoPhongCTId,
                         principalTable: "aoPhongCTs",
                         principalColumn: "MaAoPhongCT",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_hoaDonChiTiets_hoaDons_HoaDonMaHD",
-                        column: x => x.HoaDonMaHD,
+                        name: "FK_hoaDonChiTiets_hoaDons_HoaDonId",
+                        column: x => x.HoaDonId,
                         principalTable: "hoaDons",
                         principalColumn: "MaHD",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_aoPhongCTs_AoPhongMaAoPhong",
+                name: "IX_aoPhongCTs_AoPhongId",
                 table: "aoPhongCTs",
-                column: "AoPhongMaAoPhong");
+                column: "AoPhongId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_aoPhongCTs_ChatLieuMaChatLieu",
+                name: "IX_aoPhongCTs_ChatLieuId",
                 table: "aoPhongCTs",
-                column: "ChatLieuMaChatLieu");
+                column: "ChatLieuId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_aoPhongCTs_HangSXMaHSX",
+                name: "IX_aoPhongCTs_HangSXId",
                 table: "aoPhongCTs",
-                column: "HangSXMaHSX");
+                column: "HangSXId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_aoPhongCTs_MauMaMau",
+                name: "IX_aoPhongCTs_MauId",
                 table: "aoPhongCTs",
-                column: "MauMaMau");
+                column: "MauId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_aoPhongCTs_SizeMaSize",
+                name: "IX_aoPhongCTs_SizeId",
                 table: "aoPhongCTs",
-                column: "SizeMaSize");
+                column: "SizeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_hoaDonChiTiets_HoaDonMaHD",
+                name: "IX_hoaDonChiTiets_AoPhongCTId",
                 table: "hoaDonChiTiets",
-                column: "HoaDonMaHD");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_hoaDonChiTiets_MaAoPhongCT",
-                table: "hoaDonChiTiets",
-                column: "MaAoPhongCT",
+                column: "AoPhongCTId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_hoaDons_KhachHangMaKH",
-                table: "hoaDons",
-                column: "KhachHangMaKH");
+                name: "IX_hoaDonChiTiets_HoaDonId",
+                table: "hoaDonChiTiets",
+                column: "HoaDonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_hoaDons_NhanVienMaNV",
+                name: "IX_hoaDons_KhachHangId",
                 table: "hoaDons",
-                column: "NhanVienMaNV");
+                column: "KhachHangId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_nhanViens_ChucVuMaChucVu",
+                name: "IX_hoaDons_NhanVienId",
+                table: "hoaDons",
+                column: "NhanVienId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_nhanViens_ChucVuID",
                 table: "nhanViens",
-                column: "ChucVuMaChucVu");
+                column: "ChucVuID");
         }
 
         /// <inheritdoc />

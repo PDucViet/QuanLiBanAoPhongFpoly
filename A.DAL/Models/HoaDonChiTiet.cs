@@ -11,8 +11,9 @@ namespace A.DAL.Models
     public class HoaDonChiTiet
     {
         [Key]public Guid MaHdct { get; set; }
-        public HoaDon HoaDon { get; set; }
-        public Guid MaAoPhongCT { get; set; }
-        [ForeignKey("MaAoPhongCT")] public AoPhongCT AoPhongCT { get; set; }
+        public Guid HoaDonId { get; set; }
+        [ForeignKey("HoaDonId")] public HoaDon HoaDon { get; set; }
+        public Guid AoPhongCTId { get; set; }
+        [ForeignKey("AoPhongCTId")] public AoPhongCT AoPhongCT { get; set; }
     }
 }
