@@ -1,14 +1,13 @@
 ﻿using A.DAL.Models;
-using A.DAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace A.DAL.IRepositories
+namespace B.BUS.IServices
 {
-    public interface IAoPhongRepositories
+    public interface IAoPhongServices
     {
         bool Add(AoPhong aoPhong);
         bool Detele(Guid id);

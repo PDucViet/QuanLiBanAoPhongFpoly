@@ -9,15 +9,14 @@ using System.Threading.Tasks;
 
 namespace A.DAL.Repositories
 {
-    public class AoPhongRepositories : IAoPhongRepositories
+    public class ChatLieuRepositories : IChatLieuRepositories
     {
         MyDBContext _dbContext = new MyDBContext();
-
-        public bool Add(AoPhong aoPhong)
+        public bool Add(ChatLieu chatLieu)
         {
             try
             {
-                _dbContext.aoPhongs.Add(aoPhong);
+                _dbContext.chatLieus.Add(chatLieu);
                 _dbContext.SaveChanges();
                 return true;
             }
@@ -32,9 +31,9 @@ namespace A.DAL.Repositories
         {
             try
             {
-                var doituong = _dbContext.aoPhongs.FirstOrDefault(c => c.MaAoPhong == id);
+                var doituong = _dbContext.chatLieus.FirstOrDefault(c => c.MaChatLieu == id);
                 if (doituong == null) return false;
-                _dbContext.aoPhongs.Remove(doituong);
+                _dbContext.chatLieus.Remove(doituong);
                 _dbContext.SaveChanges();
                 return true;
             }
@@ -44,19 +43,19 @@ namespace A.DAL.Repositories
             }
         }
 
-        public List<AoPhong> GetAll()
+        public List<ChatLieu> GetAll()
         {
-            return _dbContext.aoPhongs.ToList();
+            return _dbContext.chatLieus.ToList();
         }
 
-        public AoPhong? Getbyid(Guid id)
+        public ChatLieu? Getbyid(Guid id)
         {
-            var obj = _dbContext.aoPhongs.FirstOrDefault(c => c.MaAoPhong == id);
+            var obj = _dbContext.chatLieus.FirstOrDefault(c => c.MaChatLieu == id);
 
             return obj;
         }
 
-        public bool Update(Guid id, AoPhong aoPhong)
+        public bool Update(Guid id, ChatLieu chatLieu)
         {
             _dbContext.Update(id);
             _dbContext.SaveChanges();

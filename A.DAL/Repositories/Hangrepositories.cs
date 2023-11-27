@@ -3,21 +3,21 @@ using A.DAL.IRepositories;
 using A.DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace A.DAL.Repositories
 {
-    public class AoPhongRepositories : IAoPhongRepositories
+    public class Hangrepositories : IHangrepositories
     {
         MyDBContext _dbContext = new MyDBContext();
-
-        public bool Add(AoPhong aoPhong)
+        public bool Add(HangSX hangSX)
         {
             try
             {
-                _dbContext.aoPhongs.Add(aoPhong);
+                _dbContext.hangSXes.Add(hangSX);
                 _dbContext.SaveChanges();
                 return true;
             }
@@ -32,9 +32,9 @@ namespace A.DAL.Repositories
         {
             try
             {
-                var doituong = _dbContext.aoPhongs.FirstOrDefault(c => c.MaAoPhong == id);
+                var doituong = _dbContext.hangSXes.FirstOrDefault(c => c.MaHSX == id);
                 if (doituong == null) return false;
-                _dbContext.aoPhongs.Remove(doituong);
+                _dbContext.hangSXes.Remove(doituong);
                 _dbContext.SaveChanges();
                 return true;
             }
@@ -44,19 +44,19 @@ namespace A.DAL.Repositories
             }
         }
 
-        public List<AoPhong> GetAll()
+        public List<HangSX> GetAll()
         {
-            return _dbContext.aoPhongs.ToList();
+            return _dbContext.hangSXes.ToList();
         }
 
-        public AoPhong? Getbyid(Guid id)
+        public HangSX? Getbyid(Guid id)
         {
-            var obj = _dbContext.aoPhongs.FirstOrDefault(c => c.MaAoPhong == id);
+            var obj = _dbContext.hangSXes.FirstOrDefault(c => c.MaHSX == id);
 
             return obj;
         }
 
-        public bool Update(Guid id, AoPhong aoPhong)
+        public bool Update(Guid id, HangSX hangSX)
         {
             _dbContext.Update(id);
             _dbContext.SaveChanges();

@@ -1,5 +1,4 @@
 ﻿using A.DAL.Models;
-using A.DAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace A.DAL.IRepositories
 {
-    public interface IAoPhongRepositories
+    public interface ISizeRepositories
     {
-        bool Add(AoPhong aoPhong);
+        bool Add(Size size);
         bool Detele(Guid id);
-        bool Update(Guid id, AoPhong aoPhong);
-        List<AoPhong> GetAll();
+        bool Update(Guid id, Size size);
+        List<Size> GetAll();
 
-        AoPhong? Getbyid(Guid id);
+        Size? Getbyid(Guid id);
     }
 }

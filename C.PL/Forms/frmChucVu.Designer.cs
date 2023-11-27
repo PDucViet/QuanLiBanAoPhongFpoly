@@ -28,182 +28,179 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtTenChucVu = new System.Windows.Forms.TextBox();
-            this.btnTimKiem = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtMaChucVu = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtTimKiem = new System.Windows.Forms.TextBox();
-            this.dgvChucVu = new System.Windows.Forms.DataGridView();
-            this.maChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvChucVu)).BeginInit();
-            this.SuspendLayout();
+            txtTenChucVu = new TextBox();
+            btnTimKiem = new Button();
+            groupBox1 = new GroupBox();
+            txtMaChucVu = new TextBox();
+            label1 = new Label();
+            btnThem = new Button();
+            btnXoa = new Button();
+            btnSua = new Button();
+            groupBox2 = new GroupBox();
+            groupBox3 = new GroupBox();
+            txtTimKiem = new TextBox();
+            dgvChucVu = new DataGridView();
+            tenChucVu = new DataGridViewTextBoxColumn();
+            maChucVu = new DataGridViewTextBoxColumn();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvChucVu).BeginInit();
+            SuspendLayout();
             // 
             // txtTenChucVu
             // 
-            this.txtTenChucVu.Location = new System.Drawing.Point(166, 53);
-            this.txtTenChucVu.Name = "txtTenChucVu";
-            this.txtTenChucVu.Size = new System.Drawing.Size(422, 27);
-            this.txtTenChucVu.TabIndex = 1;
+            txtTenChucVu.Location = new Point(166, 53);
+            txtTenChucVu.Name = "txtTenChucVu";
+            txtTenChucVu.Size = new Size(422, 27);
+            txtTenChucVu.TabIndex = 1;
             // 
             // btnTimKiem
             // 
-            this.btnTimKiem.Location = new System.Drawing.Point(293, 35);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(110, 29);
-            this.btnTimKiem.TabIndex = 2;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = true;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            btnTimKiem.Location = new Point(293, 35);
+            btnTimKiem.Name = "btnTimKiem";
+            btnTimKiem.Size = new Size(110, 29);
+            btnTimKiem.TabIndex = 2;
+            btnTimKiem.Text = "Tìm kiếm";
+            btnTimKiem.UseVisualStyleBackColor = true;
+            btnTimKiem.Click += btnTimKiem_Click;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtMaChucVu);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnThem);
-            this.groupBox1.Controls.Add(this.btnXoa);
-            this.groupBox1.Controls.Add(this.btnSua);
-            this.groupBox1.Controls.Add(this.txtTenChucVu);
-            this.groupBox1.Location = new System.Drawing.Point(11, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(639, 152);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Quản lý chức vụ";
+            groupBox1.Controls.Add(txtMaChucVu);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(btnThem);
+            groupBox1.Controls.Add(btnXoa);
+            groupBox1.Controls.Add(btnSua);
+            groupBox1.Controls.Add(txtTenChucVu);
+            groupBox1.Location = new Point(11, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(639, 152);
+            groupBox1.TabIndex = 3;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Quản lý chức vụ";
             // 
             // txtMaChucVu
             // 
-            this.txtMaChucVu.Location = new System.Drawing.Point(166, 20);
-            this.txtMaChucVu.Name = "txtMaChucVu";
-            this.txtMaChucVu.Size = new System.Drawing.Size(422, 27);
-            this.txtMaChucVu.TabIndex = 7;
+            txtMaChucVu.Location = new Point(166, 20);
+            txtMaChucVu.Name = "txtMaChucVu";
+            txtMaChucVu.Size = new Size(422, 27);
+            txtMaChucVu.TabIndex = 7;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(59, 56);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Tên chức vụ :";
+            label1.AutoSize = true;
+            label1.Location = new Point(59, 56);
+            label1.Name = "label1";
+            label1.Size = new Size(93, 20);
+            label1.TabIndex = 6;
+            label1.Text = "Tên chức vụ :";
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(117, 97);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(110, 29);
-            this.btnThem.TabIndex = 5;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            btnThem.Location = new Point(117, 97);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new Size(110, 29);
+            btnThem.TabIndex = 5;
+            btnThem.Text = "Thêm";
+            btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(381, 97);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(110, 29);
-            this.btnXoa.TabIndex = 4;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            btnXoa.Location = new Point(381, 97);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(110, 29);
+            btnXoa.TabIndex = 4;
+            btnXoa.Text = "Xóa";
+            btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(249, 97);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(110, 29);
-            this.btnSua.TabIndex = 3;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            btnSua.Location = new Point(249, 97);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(110, 29);
+            btnSua.TabIndex = 3;
+            btnSua.Text = "Sửa";
+            btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Controls.Add(this.dgvChucVu);
-            this.groupBox2.Location = new System.Drawing.Point(11, 188);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(639, 256);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Danh sách chức vụ";
+            groupBox2.Controls.Add(groupBox3);
+            groupBox2.Controls.Add(dgvChucVu);
+            groupBox2.Location = new Point(11, 188);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(639, 256);
+            groupBox2.TabIndex = 5;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Danh sách chức vụ";
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.txtTimKiem);
-            this.groupBox3.Controls.Add(this.btnTimKiem);
-            this.groupBox3.Location = new System.Drawing.Point(231, 0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(408, 69);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tìm kiếm";
+            groupBox3.Controls.Add(txtTimKiem);
+            groupBox3.Controls.Add(btnTimKiem);
+            groupBox3.Location = new Point(231, 0);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(408, 69);
+            groupBox3.TabIndex = 6;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Tìm kiếm";
             // 
             // txtTimKiem
             // 
-            this.txtTimKiem.Location = new System.Drawing.Point(6, 36);
-            this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(281, 27);
-            this.txtTimKiem.TabIndex = 5;
+            txtTimKiem.Location = new Point(6, 36);
+            txtTimKiem.Name = "txtTimKiem";
+            txtTimKiem.Size = new Size(281, 27);
+            txtTimKiem.TabIndex = 5;
             // 
             // dgvChucVu
             // 
-            this.dgvChucVu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvChucVu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.maChucVu,
-            this.tenChucVu});
-            this.dgvChucVu.Location = new System.Drawing.Point(6, 75);
-            this.dgvChucVu.Name = "dgvChucVu";
-            this.dgvChucVu.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dgvChucVu.RowTemplate.Height = 29;
-            this.dgvChucVu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvChucVu.Size = new System.Drawing.Size(627, 175);
-            this.dgvChucVu.TabIndex = 0;
-            this.dgvChucVu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChucVu_CellClick);
-            // 
-            // maChucVu
-            // 
-            this.maChucVu.DataPropertyName = "maChucVu";
-            this.maChucVu.HeaderText = "Mã chức vụ";
-            this.maChucVu.MinimumWidth = 6;
-            this.maChucVu.Name = "maChucVu";
-            this.maChucVu.Width = 125;
+            dgvChucVu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvChucVu.Columns.AddRange(new DataGridViewColumn[] { maChucVu, tenChucVu });
+            dgvChucVu.Location = new Point(6, 75);
+            dgvChucVu.Name = "dgvChucVu";
+            dgvChucVu.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dgvChucVu.RowTemplate.Height = 29;
+            dgvChucVu.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvChucVu.Size = new Size(627, 175);
+            dgvChucVu.TabIndex = 0;
+            dgvChucVu.CellClick += dgvChucVu_CellClick;
             // 
             // tenChucVu
             // 
-            this.tenChucVu.DataPropertyName = "tenChucVu";
-            this.tenChucVu.HeaderText = "Tên chức vụ";
-            this.tenChucVu.MinimumWidth = 6;
-            this.tenChucVu.Name = "tenChucVu";
-            this.tenChucVu.Width = 457;
+            tenChucVu.DataPropertyName = "tenChucVu";
+            tenChucVu.HeaderText = "Tên chức vụ";
+            tenChucVu.MinimumWidth = 6;
+            tenChucVu.Name = "tenChucVu";
+            tenChucVu.Width = 457;
+            // 
+            // maChucVu
+            // 
+            maChucVu.DataPropertyName = "maChucVu";
+            maChucVu.HeaderText = "Mã chức vụ";
+            maChucVu.MinimumWidth = 6;
+            maChucVu.Name = "maChucVu";
+            maChucVu.Width = 125;
             // 
             // frmChucVu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(661, 456);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Name = "frmChucVu";
-            this.Text = "frmChucVu";
-            this.Load += new System.EventHandler(this.frmChucVu_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvChucVu)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(661, 456);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            Name = "frmChucVu";
+            Text = "frmChucVu";
+            Load += frmChucVu_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvChucVu).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
