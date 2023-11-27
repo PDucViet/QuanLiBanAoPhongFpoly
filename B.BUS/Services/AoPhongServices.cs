@@ -12,28 +12,30 @@ namespace B.BUS.Services
 {
     public class AoPhongServices : IAoPhongServices
     {
-        IAoPhongRepositories _db = new AoPhongRepositories();
+        IAoPhongRepositories iaophongrepo = new AoPhongRepositories();
         public bool Add(AoPhong aoPhong)
         {
-          _db.Add(aoPhong);
-            return true;
+            return iaophongrepo.Add(aoPhong);
         }
 
-        public bool Delete(AoPhong aoPhong)
+        public bool Detele(Guid id)
         {
-            _db.Detele(aoPhong);
-            return true;
+            return iaophongrepo.Detele(id);
         }
 
         public List<AoPhong> GetAll()
         {
-         return _db.GetAll();
+            return iaophongrepo.GetAll();
         }
 
-        public bool Update(AoPhong aoPhong)
+        public AoPhong? Getbyid(Guid id)
         {
-            _db.Update(aoPhong);
-            return true;
+            return iaophongrepo.Getbyid(id);
+        }
+
+        public bool Update(Guid id, AoPhong aoPhong)
+        {
+            return iaophongrepo.Update(id, aoPhong);
         }
     }
 }

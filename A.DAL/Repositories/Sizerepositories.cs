@@ -9,15 +9,14 @@ using System.Threading.Tasks;
 
 namespace A.DAL.Repositories
 {
-    public class AoPhongRepositories : IAoPhongRepositories
+    public class Sizerepositories : ISizeRepositories
     {
         MyDBContext _dbContext = new MyDBContext();
-
-        public bool Add(AoPhong aoPhong)
+        public bool Add(Size size)
         {
             try
             {
-                _dbContext.aoPhongs.Add(aoPhong);
+                _dbContext.sizes.Add(size);
                 _dbContext.SaveChanges();
                 return true;
             }
@@ -32,9 +31,9 @@ namespace A.DAL.Repositories
         {
             try
             {
-                var doituong = _dbContext.aoPhongs.FirstOrDefault(c => c.MaAoPhong == id);
+                var doituong = _dbContext.sizes.FirstOrDefault(c => c.MaSize == id);
                 if (doituong == null) return false;
-                _dbContext.aoPhongs.Remove(doituong);
+                _dbContext.sizes.Remove(doituong);
                 _dbContext.SaveChanges();
                 return true;
             }
@@ -44,23 +43,24 @@ namespace A.DAL.Repositories
             }
         }
 
-        public List<AoPhong> GetAll()
+        public List<Size> GetAll()
         {
-            return _dbContext.aoPhongs.ToList();
+            return _dbContext.sizes.ToList();
         }
 
-        public AoPhong? Getbyid(Guid id)
+        public Size? Getbyid(Guid id)
         {
-            var obj = _dbContext.aoPhongs.FirstOrDefault(c => c.MaAoPhong == id);
+            var obj = _dbContext.sizes.FirstOrDefault(c =>c.MaSize == id);
 
             return obj;
         }
 
-        public bool Update(Guid id, AoPhong aoPhong)
+        public bool Update(Guid id, Size size)
         {
             _dbContext.Update(id);
             _dbContext.SaveChanges();
             return true;
         }
+
     }
 }

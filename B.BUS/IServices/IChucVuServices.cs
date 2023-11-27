@@ -12,5 +12,6 @@ namespace B.BUS.IServices
         bool Add(ChucVu chucVu);
         bool Delete(ChucVu chucVu);
         bool Update(ChucVu chucVu);
-        List<ChucVu> GetAll();    }
+        List<ChucVu> GetAll();   
+    }
 }

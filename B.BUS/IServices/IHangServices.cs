@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace B.BUS.IServices
 {
-    public interface IAoPhongServices
+    public interface IHangServices
     {
-        bool Add(AoPhong aoPhong);
+        bool Add(HangSX hangSX);
         bool Detele(Guid id);
-        bool Update(Guid id, AoPhong aoPhong);
-        List<AoPhong> GetAll();
+        bool Update(Guid id, HangSX hangSX);
+        List<HangSX> GetAll();
 
-        AoPhong? Getbyid(Guid id);
+        HangSX? Getbyid(Guid id);
     }
 }

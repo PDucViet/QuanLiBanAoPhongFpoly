@@ -21,8 +21,7 @@ namespace B.BUS.Services
 
         public bool Delete(KhachHang khachHang)
         {
-            _db.Detele(khachHang);
-            return true;
+            return _db.Detele(khachHang);
         }
 
         public List<KhachHang> GetAll()
