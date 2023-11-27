@@ -14,7 +14,6 @@ namespace A.DAL.Models
         public DateTime NgayTT { get; set; }
         public double GiamGia { get; set; }
         public double TongTien {  get; set; }
-        public string GhiChu {  get; set; }
         public NhanVien NhanVien { get; set; }
         public KhachHang KhachHang { get; set; }
         public List<HoaDonChiTiet> hoaDonChiTiets { get; set; }
