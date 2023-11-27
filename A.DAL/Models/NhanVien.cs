@@ -15,10 +15,13 @@ namespace A.DAL.Models
         public bool GioiTinhNV { get; set; }
         public string DiaChiNV { get; set; }
         public string SdtNV { get; set; }
+        public string EmailNV {  get; set; }
         public DateTime DoBNV { get; set; }
         public string TaiKhoanNV { get; set; }
         public string MatKhauNV { get; set; }
-        public ChucVu ChucVu { get; set; }
+        public Guid ChucVuId { get; set; }
+        [ForeignKey("ChucVuId")] public ChucVu ChucVu { get; set; }
+        public bool TrangThai {  get; set; }
         public List<HoaDon> hoaDons { get; set; }
     }
 }

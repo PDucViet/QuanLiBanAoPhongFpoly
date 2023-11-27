@@ -24,5 +24,18 @@ namespace C.PL.Utilities
         #region Chỉ được dùng số
 
         #endregion
+        #region Check Email
+        public static bool CheckEmail(string Email)
+        {
+            if (Email == @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }

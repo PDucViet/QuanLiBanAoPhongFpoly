@@ -30,7 +30,7 @@ namespace A.DAL.DBContext
             modelBuilder.Entity<AoPhongCT>()
                 .HasOne(s => s.HoaDonChiTiet)
                 .WithOne(s => s.AoPhongCT)
-                .HasForeignKey<HoaDonChiTiet>(s => s.MaAoPhongCT);
+                .HasForeignKey<HoaDonChiTiet>(s => s.AoPhongCTId);
         }
     }
 }
