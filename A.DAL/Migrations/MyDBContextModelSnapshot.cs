@@ -46,10 +46,10 @@ namespace A.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AoPhongMaAoPhong")
+                    b.Property<Guid>("AoPhongId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ChatLieuMaChatLieu")
+                    b.Property<Guid>("ChatLieuId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<double>("GiaBan")
@@ -58,13 +58,16 @@ namespace A.DAL.Migrations
                     b.Property<double>("GiaNhap")
                         .HasColumnType("float");
 
-                    b.Property<Guid>("HangSXMaHSX")
+                    b.Property<Guid>("HangSXId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("MauMaMau")
+                    b.Property<Guid>("HoaDonCTId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("SizeMaSize")
+                    b.Property<Guid>("MauId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SizeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("SoLuong")
@@ -75,15 +78,15 @@ namespace A.DAL.Migrations
 
                     b.HasKey("MaAoPhongCT");
 
-                    b.HasIndex("AoPhongMaAoPhong");
+                    b.HasIndex("AoPhongId");
 
-                    b.HasIndex("ChatLieuMaChatLieu");
+                    b.HasIndex("ChatLieuId");
 
-                    b.HasIndex("HangSXMaHSX");
+                    b.HasIndex("HangSXId");
 
-                    b.HasIndex("MauMaMau");
+                    b.HasIndex("MauId");
 
-                    b.HasIndex("SizeMaSize");
+                    b.HasIndex("SizeId");
 
                     b.ToTable("aoPhongCTs");
                 });
@@ -148,7 +151,7 @@ namespace A.DAL.Migrations
                     b.Property<double>("GiamGia")
                         .HasColumnType("float");
 
-                    b.Property<Guid>("KhachHangMaKH")
+                    b.Property<Guid>("KhachHangId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("NgayBan")
@@ -157,7 +160,7 @@ namespace A.DAL.Migrations
                     b.Property<DateTime>("NgayTT")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("NhanVienMaNV")
+                    b.Property<Guid>("NhanVienId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<double>("TongTien")
@@ -165,9 +168,9 @@ namespace A.DAL.Migrations
 
                     b.HasKey("MaHD");
 
-                    b.HasIndex("KhachHangMaKH");
+                    b.HasIndex("KhachHangId");
 
-                    b.HasIndex("NhanVienMaNV");
+                    b.HasIndex("NhanVienId");
 
                     b.ToTable("hoaDons");
                 });
@@ -178,18 +181,18 @@ namespace A.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("HoaDonMaHD")
+                    b.Property<Guid>("AoPhongCTId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("MaAoPhongCT")
+                    b.Property<Guid>("HoaDonId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("MaHdct");
 
-                    b.HasIndex("HoaDonMaHD");
-
-                    b.HasIndex("MaAoPhongCT")
+                    b.HasIndex("AoPhongCTId")
                         .IsUnique();
+
+                    b.HasIndex("HoaDonId");
 
                     b.ToTable("hoaDonChiTiets");
                 });
@@ -244,7 +247,10 @@ namespace A.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ChucVuMaChucVu")
+                    b.Property<Guid>("ChucVuID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ChucVuId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("DiaChiNV")
@@ -253,6 +259,10 @@ namespace A.DAL.Migrations
 
                     b.Property<DateTime>("DoBNV")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("EmailNV")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("GioiTinhNV")
                         .HasColumnType("bit");
@@ -273,9 +283,12 @@ namespace A.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("TrangThai")
+                        .HasColumnType("bit");
+
                     b.HasKey("MaNV");
 
-                    b.HasIndex("ChucVuMaChucVu");
+                    b.HasIndex("ChucVuID");
 
                     b.ToTable("nhanViens");
                 });
@@ -302,31 +315,31 @@ namespace A.DAL.Migrations
                 {
                     b.HasOne("A.DAL.Models.AoPhong", "AoPhong")
                         .WithMany("AoPhongCT")
-                        .HasForeignKey("AoPhongMaAoPhong")
+                        .HasForeignKey("AoPhongId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("A.DAL.Models.ChatLieu", "ChatLieu")
                         .WithMany("AoPhongCT")
-                        .HasForeignKey("ChatLieuMaChatLieu")
+                        .HasForeignKey("ChatLieuId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("A.DAL.Models.HangSX", "HangSX")
                         .WithMany("AoPhongCT")
-                        .HasForeignKey("HangSXMaHSX")
+                        .HasForeignKey("HangSXId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("A.DAL.Models.Mau", "Mau")
                         .WithMany("AoPhongCT")
-                        .HasForeignKey("MauMaMau")
+                        .HasForeignKey("MauId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("A.DAL.Models.Size", "Size")
                         .WithMany("AoPhongCT")
-                        .HasForeignKey("SizeMaSize")
+                        .HasForeignKey("SizeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -345,13 +358,13 @@ namespace A.DAL.Migrations
                 {
                     b.HasOne("A.DAL.Models.KhachHang", "KhachHang")
                         .WithMany("hoaDons")
-                        .HasForeignKey("KhachHangMaKH")
+                        .HasForeignKey("KhachHangId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("A.DAL.Models.NhanVien", "NhanVien")
                         .WithMany("hoaDons")
-                        .HasForeignKey("NhanVienMaNV")
+                        .HasForeignKey("NhanVienId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -362,15 +375,15 @@ namespace A.DAL.Migrations
 
             modelBuilder.Entity("A.DAL.Models.HoaDonChiTiet", b =>
                 {
-                    b.HasOne("A.DAL.Models.HoaDon", "HoaDon")
-                        .WithMany("hoaDonChiTiets")
-                        .HasForeignKey("HoaDonMaHD")
+                    b.HasOne("A.DAL.Models.AoPhongCT", "AoPhongCT")
+                        .WithOne("HoaDonChiTiet")
+                        .HasForeignKey("A.DAL.Models.HoaDonChiTiet", "AoPhongCTId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("A.DAL.Models.AoPhongCT", "AoPhongCT")
-                        .WithOne("HoaDonChiTiet")
-                        .HasForeignKey("A.DAL.Models.HoaDonChiTiet", "MaAoPhongCT")
+                    b.HasOne("A.DAL.Models.HoaDon", "HoaDon")
+                        .WithMany("hoaDonChiTiets")
+                        .HasForeignKey("HoaDonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -383,7 +396,7 @@ namespace A.DAL.Migrations
                 {
                     b.HasOne("A.DAL.Models.ChucVu", "ChucVu")
                         .WithMany("NhanVien")
-                        .HasForeignKey("ChucVuMaChucVu")
+                        .HasForeignKey("ChucVuID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
