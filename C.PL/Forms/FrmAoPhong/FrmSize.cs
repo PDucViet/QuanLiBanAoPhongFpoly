@@ -47,6 +47,10 @@ namespace C.PL.Forms.FrmSanpham2
         private void dgvSize_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
+            if (index < 0 || index >= _size.Count)
+            {
+                return;
+            }
             var doituongcellclick = _size[index];
             _idcellclick = doituongcellclick.MaSize;
             txtTenSize.Text = doituongcellclick.TenSize;
@@ -64,7 +68,7 @@ namespace C.PL.Forms.FrmSanpham2
                 {
                     MessageBox.Show("Thông tin không được trống!!");
                 }
-                else if (rb_KHD.Checked == false && rb_HoatDong.Checked ==false)
+                else if (rb_KHD.Checked == false && rb_HoatDong.Checked == false)
                 {
                     MessageBox.Show("Thông tin không được trống!!");
                 }
@@ -107,29 +111,7 @@ namespace C.PL.Forms.FrmSanpham2
             {
                 rb_HoatDong.Checked = false;
             }
-        }
-
-        private void btn_Xoa_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Bạn có muốn xóa không ?", "Thông báo", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                if (_idcellclick != null)
-                {
-                    var resultDelete = _iSizeServices.Detele((Guid)_idcellclick);
-
-                    if (resultDelete)
-                    {
-                        MessageBox.Show("Xóa thành công");
-                        loadSize();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Xóa thất bại");
-                    }
-                }
-            }
-        }
+        }  
 
         private void btn_lamMoi_Click(object sender, EventArgs e)
         {
@@ -144,6 +126,31 @@ namespace C.PL.Forms.FrmSanpham2
             if (result == DialogResult.Yes)
             {
                 Application.Exit();
+            }
+        }
+
+        private void btn_Sua_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có muốn sửa không ?", "Thông báo", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+
+                var resultsua = _iSizeServices.Update((Guid)_idcellclick, new Size()
+                {
+                    TenSize = txtTenSize.Text,
+                    TrangThaiSize = rb_HoatDong.Checked
+                });
+
+                if (resultsua)
+                {
+                    MessageBox.Show("Sửa thành công");
+                    loadSize();
+                }
+                else
+                {
+                    MessageBox.Show("Sửa thất bại");
+                }
+
             }
         }
     }

@@ -34,7 +34,7 @@
             groupBox2 = new GroupBox();
             btn_thoat = new Button();
             btn_lamMoi = new Button();
-            btn_Xoa = new Button();
+            btn_Sua = new Button();
             btn_them = new Button();
             groupBox1 = new GroupBox();
             rb_KHD = new RadioButton();
@@ -73,7 +73,7 @@
             // 
             groupBox2.Controls.Add(btn_thoat);
             groupBox2.Controls.Add(btn_lamMoi);
-            groupBox2.Controls.Add(btn_Xoa);
+            groupBox2.Controls.Add(btn_Sua);
             groupBox2.Controls.Add(btn_them);
             groupBox2.Location = new Point(611, 67);
             groupBox2.Name = "groupBox2";
@@ -105,16 +105,16 @@
             btn_lamMoi.UseVisualStyleBackColor = true;
             btn_lamMoi.Click += btn_lamMoi_Click;
             // 
-            // btn_Xoa
+            // btn_Sua
             // 
-            btn_Xoa.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Xoa.Location = new Point(176, 35);
-            btn_Xoa.Name = "btn_Xoa";
-            btn_Xoa.Size = new Size(138, 50);
-            btn_Xoa.TabIndex = 1;
-            btn_Xoa.Text = "Xóa";
-            btn_Xoa.UseVisualStyleBackColor = true;
-            btn_Xoa.Click += btn_Xoa_Click;
+            btn_Sua.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Sua.Location = new Point(176, 35);
+            btn_Sua.Name = "btn_Sua";
+            btn_Sua.Size = new Size(138, 50);
+            btn_Sua.TabIndex = 1;
+            btn_Sua.Text = "Sửa";
+            btn_Sua.UseVisualStyleBackColor = true;
+            btn_Sua.Click += btn_Sua_Click;
             // 
             // btn_them
             // 
@@ -214,7 +214,7 @@
         private GroupBox groupBox2;
         private Button btn_thoat;
         private Button btn_lamMoi;
-        private Button btn_Xoa;
+        private Button btn_Sua;
         private Button btn_them;
         private GroupBox groupBox1;
         private RadioButton rb_KHD;

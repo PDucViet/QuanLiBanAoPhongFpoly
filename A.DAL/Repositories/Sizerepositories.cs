@@ -69,9 +69,20 @@ namespace A.DAL.Repositories
 
         public bool Update(Guid id, Size size)
         {
-            _dbContext.Update(id);
-            _dbContext.SaveChanges();
-            return true;
+            try
+            {
+                var doituong = _dbContext.sizes.FirstOrDefault(c => c.MaSize == id);
+                if (doituong == null) return false;
+                doituong.TenSize = size.TenSize;
+                doituong.TrangThaiSize = size.TrangThaiSize;
+                _dbContext.sizes.Update(doituong);
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
     }
