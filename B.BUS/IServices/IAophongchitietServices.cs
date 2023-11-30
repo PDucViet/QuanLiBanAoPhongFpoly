@@ -12,7 +12,7 @@ namespace B.BUS.IServices
     {
         bool Add(AoPhongCT aoPhongCT);
         bool Detele(Guid id);
-        bool Update(Guid id, AoPhongCT aoPhongCT);
+        bool Update( AoPhongCT aoPhongCT);
         List<AoPhongCT> GetAll();
 
         AoPhongCT? Getbyid(Guid id);

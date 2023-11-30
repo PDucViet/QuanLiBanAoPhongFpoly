@@ -71,27 +71,6 @@ namespace C.PL.Forms.FrmSanpham2
             }
         }
 
-        private void btn_Xoa_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Bạn có muốn xóa không ?", "Thông báo", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                if (_idcellclick != null)
-                {
-                    var resultDelete = _chatlieuServices.Detele((Guid)_idcellclick);
-
-                    if (resultDelete)
-                    {
-                        MessageBox.Show("Xóa thành công");
-                        loadchatlieu();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Xóa thất bại");
-                    }
-                }
-            }
-        }
 
         private void btn_lamMoi_Click(object sender, EventArgs e)
         {
@@ -112,6 +91,10 @@ namespace C.PL.Forms.FrmSanpham2
         private void dgv_Chatlieu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
+            if (index < 0 || index >= _chatlieu.Count)
+            {
+                return;
+            }
             var doituongcellclick = _chatlieu[index];
             _idcellclick = doituongcellclick.MaChatLieu;
             txt_chatlieu.Text = doituongcellclick.TenChatLieu;
@@ -122,6 +105,31 @@ namespace C.PL.Forms.FrmSanpham2
         private void FrmChatLieu_Load(object sender, EventArgs e)
         {
             loadchatlieu();
+        }
+
+        private void btn_Sua_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có muốn sửa không ?", "Thông báo", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                
+                    var resultsua = _chatlieuServices.Update((Guid)_idcellclick, new ChatLieu()
+                    {
+                        TenChatLieu =txt_chatlieu.Text,
+                        TrangThaiChatLieu = rb_HoatDong.Checked
+                    });
+
+                    if (resultsua)
+                    {
+                        MessageBox.Show("Sửa thành công");
+                        loadchatlieu();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sửa thất bại");
+                    }
+                
+            }
         }
     }
 }

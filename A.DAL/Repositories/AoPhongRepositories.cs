@@ -78,9 +78,20 @@ namespace A.DAL.Repositories
 
         public bool Update(Guid id, AoPhong aoPhong)
         {
-            _dbContext.Update(id);
-            _dbContext.SaveChanges();
-            return true;
+            try
+            {
+                var doituong = _dbContext.aoPhongs.FirstOrDefault(c => c.MaAoPhong == id);
+                if (doituong == null) return false;
+                doituong.TenAoPhong = aoPhong.TenAoPhong;
+                doituong.TrangThaiAoPhong = aoPhong.TrangThaiAoPhong;
+                _dbContext.aoPhongs.Update(doituong);
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

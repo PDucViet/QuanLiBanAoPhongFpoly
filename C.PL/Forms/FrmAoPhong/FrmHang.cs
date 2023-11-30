@@ -70,29 +70,7 @@ namespace C.PL.Forms
                     MessageBox.Show("Thêm thành công");
                 }
             }
-        }
-
-        private void btn_Xoa_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Bạn có muốn xóa không ?", "Thông báo", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                if (_idcellclick != null)
-                {
-                    var resultDelete = _ihangServices.Detele((Guid)_idcellclick);
-
-                    if (resultDelete)
-                    {
-                        MessageBox.Show("Xóa thành công");
-                        loadHang();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Xóa thất bại");
-                    }
-                }
-            }
-        }
+        }      
 
         private void btn_lamMoi_Click(object sender, EventArgs e)
         {
@@ -113,6 +91,10 @@ namespace C.PL.Forms
         private void dgv_NSX_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
+            if (index < 0 || index >= _hang.Count)
+            {
+                return;
+            }
             var doituongcellclick = _hang[index];
             _idcellclick = doituongcellclick.MaHSX;
             txt_TenNSX.Text = doituongcellclick.TenHSX;
@@ -123,6 +105,31 @@ namespace C.PL.Forms
         private void FrmHang_Load(object sender, EventArgs e)
         {
             loadHang();
+        }
+
+        private void btn_Sua_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có muốn sửa không ?", "Thông báo", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+
+                var resultsua = _ihangServices.Update((Guid)_idcellclick, new HangSX()
+                {
+                    TenHSX = txt_TenNSX.Text,
+                    TrangThaiHSX = rb_HoatDong.Checked
+                });
+
+                if (resultsua)
+                {
+                    MessageBox.Show("Sửa thành công");
+                    loadHang();
+                }
+                else
+                {
+                    MessageBox.Show("Sửa thất bại");
+                }
+
+            }
         }
     }
 }

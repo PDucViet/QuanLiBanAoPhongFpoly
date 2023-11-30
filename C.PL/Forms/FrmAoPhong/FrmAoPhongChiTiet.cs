@@ -116,14 +116,80 @@ namespace C.PL.Views
                     item.sizes.TenSize,
                     item.hangSXes.TenHSX,
                     item.chatLieus.TenChatLieu,
-                    item.aoPhongCTs.TrangThaiAoPhongCT == true ? "Còn Hàng" : "Hét Hàng"
+                    item.aoPhongCTs.TrangThaiAoPhongCT == true ? "Còn Hàng" : "Hết Hàng"
                     );
 
             }
         }
         private void btn_capNhat_Click(object sender, EventArgs e)
         {
+            var Maucb = _imauServices.GetAll().Where(c => c.TenMau == cbMau.SelectedItem).Select(c => c.MaMau).FirstOrDefault();
+            var Aocb = _aophongServices.GetAll().Where(c => c.TenAoPhong == cbaophong.SelectedItem).Select(c => c.MaAoPhong).FirstOrDefault();
+            var Hangcb = _ihangServices.GetAll().Where(c => c.TenHSX == cbNSX.SelectedItem).Select(c => c.MaHSX).FirstOrDefault();
+            var Chatlieucb = _chatlieuServices.GetAll().Where(c => c.TenChatLieu == cbChatLieu.SelectedItem).Select(c => c.MaChatLieu).FirstOrDefault();
+            var Sizecb = _iSizeServices.GetAll().Where(c => c.TenSize == cbSize.SelectedItem).Select(c => c.MaSize).FirstOrDefault();
+            var update = _aophongchitietServices.GetAll().FirstOrDefault();
+            if (update == null)
+            {
+                MessageBox.Show("Vui lòng nhập đúng mã sản phẩm");
+            }
+            else
+            {
+                int soLuong;
+                float giaNhap;
+                float giaBan;
+                if (txtGiaBan.Text == "" || txtGiaNhap.Text == "" || txtSoLuong.Text == "")
+                {
+                    MessageBox.Show("Vui lòng không để trống!!");
+                    return;
+                }
+                else if (!float.TryParse(txtGiaNhap.Text, out giaNhap) || giaNhap <= 0)
+                {
+                    MessageBox.Show("Giá nhập không hợp lệ");
+                    return;
+                }
+                else if (!int.TryParse(txtSoLuong.Text, out soLuong) || soLuong <= 0)
+                {
+                    MessageBox.Show("Số lượng không hợp lệ");
+                    return;
+                }
 
+
+                else if (!float.TryParse(txtGiaNhap.Text, out giaNhap) || giaNhap <= 0)
+                {
+                    MessageBox.Show("Giá nhập không hợp lệ");
+                    return;
+                }
+
+                else if (!float.TryParse(txtGiaBan.Text, out giaBan) || giaBan <= 0)
+                {
+                    MessageBox.Show("Giá bán không hợp lệ");
+                    return;
+                }
+
+                else if (giaNhap > giaBan)
+                {
+                    MessageBox.Show("Vui lòng nhập giá bán lớn hơn giá nhập");
+                    return;
+                }
+
+                else
+                {
+                    update.AoPhongId = Aocb;
+                    update.GiaNhap = float.Parse(txtGiaNhap.Text);
+                    update.GiaBan = float.Parse(txtGiaBan.Text);
+                    update.SoLuong = Convert.ToInt32(txtSoLuong.Text);
+                    update.MauId = Maucb;
+                    update.SizeId = Sizecb;
+                    update.HangSXId = Hangcb;
+                    update.ChatLieuId = Chatlieucb;
+                    update.TrangThaiAoPhongCT = rbConHang.Checked == true ? true : false;
+                    _aophongchitietServices.Update(update);
+                    MessageBox.Show("Cập nhật sản phẩm thành công");
+                    loadDuLieu();
+
+                }
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -187,7 +253,7 @@ namespace C.PL.Views
                         SizeId = Sizecb,
                         HangSXId = Hangcb,
                         ChatLieuId = Chatlieucb,
-                        TrangThaiAoPhongCT = rbConHang.Checked                                              
+                        TrangThaiAoPhongCT = rbConHang.Checked
                     };
                     _aophongchitietServices.Add(aoct);
                     MessageBox.Show("Thêm thành công");
@@ -208,7 +274,66 @@ namespace C.PL.Views
 
         private void dgvAoPhongchitiet_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            int index = e.RowIndex;
+            if (index >= 0 || index <= dgvAoPhongchitiet.RowCount)
+            {
+                DataGridViewRow row = dgvAoPhongchitiet.Rows[index];
+                cbaophong.Text = row.Cells[1].Value.ToString();
+                txtGiaNhap.Text = row.Cells[2].Value.ToString();
+                txtGiaBan.Text = row.Cells[3].Value.ToString();
+                txtSoLuong.Text = row.Cells[4].Value.ToString();
+                cbMau.Text = row.Cells[5].Value.ToString();
+                cbSize.Text = row.Cells[6].Value.ToString();
+                cbNSX.Text = row.Cells[7].Value.ToString();
+                cbChatLieu.Text = row.Cells[8].Value.ToString();
+                rbConHang.Checked = row.Cells[9].Value.ToString() == "Còn Hàng" == true;
+                rbHetHang.Checked = row.Cells[9].Value.ToString() == "Hết Hàng" == true;
+            }
+            else
+            {
+                return;
+            }
+            
 
+
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            dgvAoPhongchitiet.Rows.Clear();
+            foreach (var item in _aophongchitietServices.getViewAophongCT().Where(x => x.aoPhongs.TenAoPhong.ToLower().Contains(txtTimKiem.Text)
+            || x.maus.TenMau.ToLower().Contains(txtTimKiem.Text) || x.hangSXes.TenHSX.ToLower().Contains(txtTimKiem.Text)
+            || x.sizes.TenSize.ToLower().Contains(txtTimKiem.Text) || x.chatLieus.TenChatLieu.ToLower().Contains(txtTimKiem.Text)
+            || Convert.ToString(x.aoPhongCTs.MaAoPhongCT).Contains(txtTimKiem.Text)))
+            {
+
+                dgvAoPhongchitiet.Rows.Add(
+                    item.aoPhongCTs.MaAoPhongCT,
+                    item.aoPhongs.TenAoPhong,
+                    item.aoPhongCTs.GiaNhap,
+                    item.aoPhongCTs.GiaBan,
+                    item.aoPhongCTs.SoLuong,
+                    item.maus.TenMau,
+                    item.sizes.TenSize,
+                    item.hangSXes.TenHSX,
+                    item.chatLieus.TenChatLieu,
+                    item.aoPhongCTs.TrangThaiAoPhongCT == true ? "Còn Hàng" : "Hết Hàng"
+                    );
+            }
+        }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            cbaophong.SelectedIndex = 0;
+            txtGiaNhap.Text = "";
+            txtGiaBan.Text = "";
+            txtSoLuong.Text = "";
+            rbConHang.Checked = true;
+            cbMau.SelectedIndex = 0;
+            cbSize.SelectedIndex = 0;
+            cbNSX.SelectedIndex = 0;
+            cbChatLieu.SelectedIndex = 0;
+            txtTimKiem.Text = "";
         }
     }
 }

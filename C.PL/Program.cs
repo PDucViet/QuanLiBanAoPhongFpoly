@@ -1,3 +1,4 @@
+using A.DAL.Models;
 using C.PL.Forms;
 using C.PL.Forms.FrmDangNhap;
 using C.PL.Forms.FrmSanpham2;

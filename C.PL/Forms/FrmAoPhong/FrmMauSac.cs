@@ -71,28 +71,6 @@ namespace C.PL.Forms.FrmSanpham2
             }
         }
 
-        private void btn_Xoa_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Bạn có muốn xóa không ?", "Thông báo", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                if (_idcellclick != null)
-                {
-                    var resultDelete = _imauServices.Detele((Guid)_idcellclick);
-
-                    if (resultDelete)
-                    {
-                        MessageBox.Show("Xóa thành công");
-                        loadMau();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Xóa thất bại");
-                    }
-                }
-            }
-        }
-
         private void btn_lamMoi_Click(object sender, EventArgs e)
         {
             txt_TenMau.Text = "";
@@ -112,6 +90,10 @@ namespace C.PL.Forms.FrmSanpham2
         private void dgv_Mau_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
+            if (index < 0 || index >= _mau.Count)
+            {
+                return;
+            }
             var doituongcellclick = _mau[index];
             _idcellclick = doituongcellclick.MaMau;
             txt_TenMau.Text = doituongcellclick.TenMau;
@@ -122,6 +104,31 @@ namespace C.PL.Forms.FrmSanpham2
         private void FrmMauSac_Load(object sender, EventArgs e)
         {
             loadMau();
+        }
+
+        private void btn_Sua_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có muốn sửa không ?", "Thông báo", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+
+                var resultsua = _imauServices.Update((Guid)_idcellclick, new Mau()
+                {
+                    TenMau = txt_TenMau.Text,
+                    TrangThaiMu = rb_HoatDong.Checked
+                });
+
+                if (resultsua)
+                {
+                    MessageBox.Show("Sửa thành công");
+                    loadMau();
+                }
+                else
+                {
+                    MessageBox.Show("Sửa thất bại");
+                }
+
+            }
         }
     }
 }

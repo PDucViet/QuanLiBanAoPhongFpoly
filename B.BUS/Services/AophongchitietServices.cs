@@ -67,9 +67,9 @@ namespace B.BUS.Services
             return _lstView;
         }
 
-        public bool Update(Guid id, AoPhongCT aoPhongCT)
+        public bool Update( AoPhongCT aoPhongCT)
         {
-            return iaophongchitietrepo.Update(id, aoPhongCT);
+            return iaophongchitietrepo.Update( aoPhongCT);
         }
     }
 }

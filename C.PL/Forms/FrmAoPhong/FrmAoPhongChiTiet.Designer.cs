@@ -290,7 +290,7 @@
             btn_clear.TabIndex = 3;
             btn_clear.Text = "Clear";
             btn_clear.UseVisualStyleBackColor = true;
-            btn_clear.Click += btnThoat_Click;
+            btn_clear.Click += btn_clear_Click;
             // 
             // btnThoat
             // 
@@ -368,6 +368,7 @@
             txtTimKiem.Name = "txtTimKiem";
             txtTimKiem.Size = new Size(361, 27);
             txtTimKiem.TabIndex = 1;
+            txtTimKiem.TextChanged += txtTimKiem_TextChanged;
             // 
             // Column10
             // 
