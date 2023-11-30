@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -39,6 +40,7 @@ namespace C.PL.Views
             LoadMauSac();
             LoadSize();
             LoadNhaSanXuat();
+            rbConHang.Checked = true;
         }
 
         public void LoadNhaSanXuat()
@@ -48,7 +50,8 @@ namespace C.PL.Views
             {
                 cbNSX.Items.Add(item.TenHSX.ToString());
             }
-            
+            cbNSX.SelectedIndex = 0;
+
         }
         public void LoadMauSac()
         {
@@ -57,7 +60,8 @@ namespace C.PL.Views
             {
                 cbMau.Items.Add(item.TenMau.ToString());
             }
-            
+            cbMau.SelectedIndex = 0;
+
         }
         public void LoadSize()
         {
@@ -66,7 +70,7 @@ namespace C.PL.Views
             {
                 cbSize.Items.Add(item.TenSize.ToString());
             }
-            
+            cbSize.SelectedIndex = 0;
         }
         public void LoadChatLieu()
         {
@@ -75,7 +79,7 @@ namespace C.PL.Views
             {
                 cbChatLieu.Items.Add(item.TenChatLieu);
             }
-            
+            cbChatLieu.SelectedIndex = 0;
         }
         public void LoadAophong()
         {
@@ -84,7 +88,7 @@ namespace C.PL.Views
             {
                 cbaophong.Items.Add(item.TenAoPhong);
             }
-            
+            cbaophong.SelectedIndex = 0;
         }
         public void loadDuLieu()
         {
@@ -112,9 +116,9 @@ namespace C.PL.Views
                     item.sizes.TenSize,
                     item.hangSXes.TenHSX,
                     item.chatLieus.TenChatLieu,
-                    item.aoPhongCTs.TrangThaiAoPhongCT == true ? "Còn Hàng" : "Hét Hàng"                    
+                    item.aoPhongCTs.TrangThaiAoPhongCT == true ? "Còn Hàng" : "Hét Hàng"
                     );
-                    
+
             }
         }
         private void btn_capNhat_Click(object sender, EventArgs e)
@@ -124,14 +128,53 @@ namespace C.PL.Views
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            var Maucb = _imauServices.GetAll().Where(c =>c.TenMau == cbMau.SelectedItem).Select(c =>c.MaMau).FirstOrDefault();
-            var Aocb = _aophongServices.GetAll().Where(c =>c.TenAoPhong == cbaophong.SelectedItem).Select(c =>c.MaAoPhong).FirstOrDefault();
-            var Hangcb = _ihangServices.GetAll().Where(c =>c.TenHSX == cbNSX.SelectedItem).Select(c =>c.MaHSX).FirstOrDefault();
-            var Chatlieucb = _chatlieuServices.GetAll().Where(c =>c.TenChatLieu == cbChatLieu.SelectedItem).Select(c =>c.MaChatLieu).FirstOrDefault();
-            var Sizecb = _iSizeServices.GetAll().Where(c =>c.TenSize == cbSize.SelectedItem).Select(c =>c.MaSize).FirstOrDefault();
-           DialogResult result = MessageBox.Show("Bạn có muốn thêm không ?", "Thông báo", MessageBoxButtons.YesNo);
+            var Maucb = _imauServices.GetAll().Where(c => c.TenMau == cbMau.SelectedItem).Select(c => c.MaMau).FirstOrDefault();
+            var Aocb = _aophongServices.GetAll().Where(c => c.TenAoPhong == cbaophong.SelectedItem).Select(c => c.MaAoPhong).FirstOrDefault();
+            var Hangcb = _ihangServices.GetAll().Where(c => c.TenHSX == cbNSX.SelectedItem).Select(c => c.MaHSX).FirstOrDefault();
+            var Chatlieucb = _chatlieuServices.GetAll().Where(c => c.TenChatLieu == cbChatLieu.SelectedItem).Select(c => c.MaChatLieu).FirstOrDefault();
+            var Sizecb = _iSizeServices.GetAll().Where(c => c.TenSize == cbSize.SelectedItem).Select(c => c.MaSize).FirstOrDefault();
+            DialogResult result = MessageBox.Show("Bạn có muốn thêm không ?", "Thông báo", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
-            {                            
+            {
+
+                int soLuong;
+                float giaNhap;
+                float giaBan;
+                if (txtGiaBan.Text == "" || txtGiaNhap.Text == "" || txtSoLuong.Text == "")
+                {
+                    MessageBox.Show("Vui lòng không để trống!!");
+                    return;
+                }
+                else if (!float.TryParse(txtGiaNhap.Text, out giaNhap) || giaNhap <= 0)
+                {
+                    MessageBox.Show("Giá nhập không hợp lệ");
+                    return;
+                }
+                else if (!int.TryParse(txtSoLuong.Text, out soLuong) || soLuong <= 0)
+                {
+                    MessageBox.Show("Số lượng không hợp lệ");
+                    return;
+                }
+
+
+                else if (!float.TryParse(txtGiaNhap.Text, out giaNhap) || giaNhap <= 0)
+                {
+                    MessageBox.Show("Giá nhập không hợp lệ");
+                    return;
+                }
+
+                else if (!float.TryParse(txtGiaBan.Text, out giaBan) || giaBan <= 0)
+                {
+                    MessageBox.Show("Giá bán không hợp lệ");
+                    return;
+                }
+
+                else if (giaNhap > giaBan)
+                {
+                    MessageBox.Show("Vui lòng nhập giá bán lớn hơn giá nhập");
+                    return;
+                }
+
                 {
                     AoPhongCT aoct = new()
                     {
@@ -144,7 +187,7 @@ namespace C.PL.Views
                         SizeId = Sizecb,
                         HangSXId = Hangcb,
                         ChatLieuId = Chatlieucb,
-                        TrangThaiAoPhongCT = rbConHang.Checked
+                        TrangThaiAoPhongCT = rbConHang.Checked                                              
                     };
                     _aophongchitietServices.Add(aoct);
                     MessageBox.Show("Thêm thành công");
@@ -152,7 +195,20 @@ namespace C.PL.Views
                 }
 
             }
-            
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có muốn thoát hay không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void dgvAoPhongchitiet_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
