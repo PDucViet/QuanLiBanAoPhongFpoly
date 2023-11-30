@@ -45,6 +45,7 @@
             label6 = new Label();
             label9 = new Label();
             groupBox1 = new GroupBox();
+            lb_Id = new Label();
             groupBox3 = new GroupBox();
             rdOff = new RadioButton();
             rdOn = new RadioButton();
@@ -57,7 +58,8 @@
             dt_DoB = new DateTimePicker();
             label4 = new Label();
             dgvNhanVien = new DataGridView();
-            lb_Id = new Label();
+            tbSearch = new TextBox();
+            btSearch = new Button();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -66,7 +68,7 @@
             // 
             // btnReset
             // 
-            btnReset.Location = new Point(630, 381);
+            btnReset.Location = new Point(710, 464);
             btnReset.Margin = new Padding(3, 2, 3, 2);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(131, 47);
@@ -74,10 +76,11 @@
             btnReset.Text = "Reset";
             btnReset.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnReset.UseVisualStyleBackColor = true;
+            btnReset.Click += btnReset_Click;
             // 
             // btnSua
             // 
-            btnSua.Location = new Point(811, 381);
+            btnSua.Location = new Point(971, 464);
             btnSua.Margin = new Padding(3, 2, 3, 2);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(131, 47);
@@ -85,11 +88,12 @@
             btnSua.Text = "Sửa nhân viên";
             btnSua.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // btnThem
             // 
             btnThem.Image = (Image)resources.GetObject("btnThem.Image");
-            btnThem.Location = new Point(449, 381);
+            btnThem.Location = new Point(449, 464);
             btnThem.Margin = new Padding(3, 2, 3, 2);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(131, 47);
@@ -102,7 +106,7 @@
             // BtnThoat
             // 
             BtnThoat.Image = (Image)resources.GetObject("BtnThoat.Image");
-            BtnThoat.Location = new Point(992, 381);
+            BtnThoat.Location = new Point(1232, 464);
             BtnThoat.Margin = new Padding(3, 2, 3, 2);
             BtnThoat.Name = "BtnThoat";
             BtnThoat.Size = new Size(131, 47);
@@ -143,7 +147,7 @@
             tb_diachi.Location = new Point(148, 80);
             tb_diachi.Margin = new Padding(3, 2, 3, 2);
             tb_diachi.Name = "tb_diachi";
-            tb_diachi.Size = new Size(155, 23);
+            tb_diachi.Size = new Size(229, 23);
             tb_diachi.TabIndex = 48;
             // 
             // tb_ten
@@ -151,7 +155,7 @@
             tb_ten.Location = new Point(148, 42);
             tb_ten.Margin = new Padding(3, 2, 3, 2);
             tb_ten.Name = "tb_ten";
-            tb_ten.Size = new Size(155, 23);
+            tb_ten.Size = new Size(229, 23);
             tb_ten.TabIndex = 49;
             // 
             // tb_sdt
@@ -159,7 +163,7 @@
             tb_sdt.Location = new Point(148, 121);
             tb_sdt.Margin = new Padding(3, 2, 3, 2);
             tb_sdt.Name = "tb_sdt";
-            tb_sdt.Size = new Size(155, 23);
+            tb_sdt.Size = new Size(229, 23);
             tb_sdt.TabIndex = 50;
             // 
             // tb_email
@@ -167,7 +171,7 @@
             tb_email.Location = new Point(148, 163);
             tb_email.Margin = new Padding(3, 2, 3, 2);
             tb_email.Name = "tb_email";
-            tb_email.Size = new Size(155, 23);
+            tb_email.Size = new Size(229, 23);
             tb_email.TabIndex = 51;
             // 
             // label5
@@ -185,7 +189,7 @@
             cbb_cv.Location = new Point(148, 233);
             cbb_cv.Margin = new Padding(3, 2, 3, 2);
             cbb_cv.Name = "cbb_cv";
-            cbb_cv.Size = new Size(155, 23);
+            cbb_cv.Size = new Size(229, 23);
             cbb_cv.TabIndex = 53;
             // 
             // label6
@@ -231,10 +235,20 @@
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(383, 424);
+            groupBox1.Size = new Size(383, 502);
             groupBox1.TabIndex = 40;
             groupBox1.TabStop = false;
             groupBox1.Text = "Nhập thông tin nhân viên";
+            // 
+            // lb_Id
+            // 
+            lb_Id.AutoSize = true;
+            lb_Id.Location = new Point(15, 23);
+            lb_Id.Name = "lb_Id";
+            lb_Id.Size = new Size(0, 15);
+            lb_Id.TabIndex = 70;
+            lb_Id.UseWaitCursor = true;
+            lb_Id.Visible = false;
             // 
             // groupBox3
             // 
@@ -275,7 +289,7 @@
             groupBox2.Controls.Add(rbMale);
             groupBox2.Location = new Point(139, 195);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(180, 33);
+            groupBox2.Size = new Size(229, 33);
             groupBox2.TabIndex = 68;
             groupBox2.TabStop = false;
             // 
@@ -314,7 +328,7 @@
             // 
             tb_TaiKhoan.Location = new Point(148, 323);
             tb_TaiKhoan.Name = "tb_TaiKhoan";
-            tb_TaiKhoan.Size = new Size(155, 23);
+            tb_TaiKhoan.Size = new Size(229, 23);
             tb_TaiKhoan.TabIndex = 64;
             // 
             // label7
@@ -331,7 +345,7 @@
             dt_DoB.Format = DateTimePickerFormat.Short;
             dt_DoB.Location = new Point(148, 278);
             dt_DoB.Name = "dt_DoB";
-            dt_DoB.Size = new Size(155, 23);
+            dt_DoB.Size = new Size(229, 23);
             dt_DoB.TabIndex = 60;
             // 
             // label4
@@ -346,27 +360,38 @@
             // dgvNhanVien
             // 
             dgvNhanVien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvNhanVien.Location = new Point(449, 16);
+            dgvNhanVien.Location = new Point(449, 97);
             dgvNhanVien.Name = "dgvNhanVien";
             dgvNhanVien.RowTemplate.Height = 25;
-            dgvNhanVien.Size = new Size(683, 339);
+            dgvNhanVien.Size = new Size(916, 339);
             dgvNhanVien.TabIndex = 41;
             dgvNhanVien.CellClick += dgvNhanVien_CellClick;
             // 
-            // lb_Id
+            // tbSearch
             // 
-            lb_Id.AutoSize = true;
-            lb_Id.Location = new Point(15, 23);
-            lb_Id.Name = "lb_Id";
-            lb_Id.Size = new Size(0, 15);
-            lb_Id.TabIndex = 70;
-            lb_Id.UseWaitCursor = true;
+            tbSearch.Location = new Point(661, 24);
+            tbSearch.Name = "tbSearch";
+            tbSearch.Size = new Size(521, 23);
+            tbSearch.TabIndex = 42;
+            // 
+            // btSearch
+            // 
+            btSearch.Location = new Point(1225, 24);
+            btSearch.Name = "btSearch";
+            btSearch.Size = new Size(140, 23);
+            btSearch.TabIndex = 43;
+            btSearch.Text = "Tìm kiếm";
+            btSearch.UseVisualStyleBackColor = true;
+            btSearch.Click += btSearch_Click;
             // 
             // FrmNhanVien
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1188, 444);
+            BackColor = SystemColors.ActiveBorder;
+            ClientSize = new Size(1377, 522);
+            Controls.Add(btSearch);
+            Controls.Add(tbSearch);
             Controls.Add(dgvNhanVien);
             Controls.Add(groupBox1);
             Controls.Add(btnReset);
@@ -384,6 +409,7 @@
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvNhanVien).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -417,5 +443,7 @@
         private GroupBox groupBox2;
         private GroupBox groupBox3;
         private Label lb_Id;
+        private TextBox tbSearch;
+        private Button btSearch;
     }
 }
