@@ -52,8 +52,8 @@ namespace C.PL.Forms
             DialogResult result = MessageBox.Show("Bạn có muốn thêm không ?", "Thông báo", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                foreach (var x in list)
-                {
+                //foreach (var x in list)
+                //{
                     if (txtTenKhachHang.Text == "" || txtDiaChi.Text == "" || txtSDT.Text == "")
                     {
                         MessageBox.Show("Thông tin không được trống!!");
@@ -62,10 +62,10 @@ namespace C.PL.Forms
                     {
                         MessageBox.Show("Sai SDT!!");
                     }
-                    else if (x.TenKH == txtTenKhachHang.Text && x.DiaChiKH == txtDiaChi.Text && x.SdtKH == txtSDT.Text)
-                    {
-                        MessageBox.Show("Thông tin khách hàng đã tồn tại!!");
-                    }
+                    //else if (x.TenKH == txtTenKhachHang.Text && x.DiaChiKH == txtDiaChi.Text && x.SdtKH == txtSDT.Text)
+                    //{
+                    //    MessageBox.Show("Thông tin khách hàng đã tồn tại!!");
+                    //}
                     else
                     {
                         KhachHang khachHang = new KhachHang()
@@ -83,7 +83,7 @@ namespace C.PL.Forms
                 }
 
             }
-        }
+
         private void dgvKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow data = dgvKhachHang.Rows[e.RowIndex];
