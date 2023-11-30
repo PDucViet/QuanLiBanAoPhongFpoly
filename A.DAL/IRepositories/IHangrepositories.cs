@@ -15,5 +15,7 @@ namespace A.DAL.IRepositories
         List<HangSX> GetAll();
 
         HangSX? Getbyid(Guid id);
+
+        bool checktrung(string ten);
     }
 }

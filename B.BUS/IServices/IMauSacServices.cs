@@ -15,5 +15,7 @@ namespace B.BUS.IServices
         List<Mau> GetAll();
 
         Mau? Getbyid(Guid id);
+
+        bool checktrung(string ten);
     }
 }

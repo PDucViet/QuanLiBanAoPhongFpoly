@@ -53,6 +53,10 @@ namespace C.PL.Forms
                 {
                     MessageBox.Show("Thông tin không được trống!!");
                 }
+                else if (_ihangServices.checktrung(txt_TenNSX.Text))
+                {
+                    MessageBox.Show("Trùng tên. Hãy nhập tên khác.");
+                }
                 else
                 {
                     HangSX hang = new HangSX()

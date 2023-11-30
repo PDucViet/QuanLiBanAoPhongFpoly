@@ -13,30 +13,30 @@ using System.Windows.Forms;
 
 namespace C.PL.Forms.FrmSanpham2
 {
-    public partial class FrmAoPhong : Form
+    public partial class FrmMauSac : Form
     {
-        AoPhongServices _aophongServices = new();
-        List<AoPhong> _aophong = new();
+        MauSacServices _imauServices = new();
+        List<Mau> _mau = new();
         Guid? _idcellclick = null;
-        public FrmAoPhong()
+        public FrmMauSac()
         {
             InitializeComponent();
         }
-        public void loadaophong()
+        public void loadMau()
         {
-            dgv_Aophong.Rows.Clear();
-            dgv_Aophong.ColumnCount = 3;
-            dgv_Aophong.Columns[0].Name = "Mã Áo Phông";
-            dgv_Aophong.Columns[1].Name = "Tên Áo Phông";
-            dgv_Aophong.Columns[2].Name = "Trạng thái Áo Phông";
+            dgv_Mau.Rows.Clear();
+            dgv_Mau.ColumnCount = 3;
+            dgv_Mau.Columns[0].Name = "Mã Màu";
+            dgv_Mau.Columns[1].Name = "Tên Màu";
+            dgv_Mau.Columns[2].Name = "Trạng thái Màu";
 
-            _aophong = _aophongServices.GetAll();
-            foreach (var item in _aophong)
+            _mau = _imauServices.GetAll();
+            foreach (var item in _mau)
             {
-                dgv_Aophong.Rows.Add(
-                    item.MaAoPhong,
-                    item.TenAoPhong,
-                    item.TrangThaiAoPhong == true ? "Còn Hàng" : "Hét Hàng");
+                dgv_Mau.Rows.Add(
+                    item.MaMau,
+                    item.TenMau,
+                    item.TrangThaiMu == true ? "Còn hàng" : "Hết hàng");
             }
         }
         private void btn_them_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace C.PL.Forms.FrmSanpham2
             DialogResult result = MessageBox.Show("Bạn có muốn thêm không ?", "Thông báo", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                if (txt_tenAophong.Text == "")
+                if (txt_TenMau.Text == "")
                 {
                     MessageBox.Show("Thông tin không được trống!!");
                 }
@@ -52,16 +52,20 @@ namespace C.PL.Forms.FrmSanpham2
                 {
                     MessageBox.Show("Thông tin không được trống!!");
                 }
+                else if (_imauServices.checktrung(txt_TenMau.Text))
+                {
+                    MessageBox.Show("Trùng tên. Hãy nhập tên khác.");
+                }
                 else
                 {
-                    AoPhong aoPhong = new AoPhong()
+                    Mau mau = new Mau()
                     {
-                        MaAoPhong = Guid.NewGuid(),
-                        TenAoPhong = txt_tenAophong.Text,
-                        TrangThaiAoPhong = rb_HoatDong.Checked,
+                        MaMau = Guid.NewGuid(),
+                        TenMau = txt_TenMau.Text,
+                        TrangThaiMu = rb_HoatDong.Checked,
                     };
-                    _aophongServices.Add(aoPhong);
-                    loadaophong();
+                    _imauServices.Add(mau);
+                    loadMau();
                     MessageBox.Show("Thêm thành công");
                 }
             }
@@ -74,12 +78,12 @@ namespace C.PL.Forms.FrmSanpham2
             {
                 if (_idcellclick != null)
                 {
-                    var resultDelete = _aophongServices.Detele((Guid)_idcellclick);
+                    var resultDelete = _imauServices.Detele((Guid)_idcellclick);
 
                     if (resultDelete)
                     {
                         MessageBox.Show("Xóa thành công");
-                        loadaophong();
+                        loadMau();
                     }
                     else
                     {
@@ -91,8 +95,7 @@ namespace C.PL.Forms.FrmSanpham2
 
         private void btn_lamMoi_Click(object sender, EventArgs e)
         {
-
-            txt_tenAophong.Text = "";
+            txt_TenMau.Text = "";
             rb_HoatDong.Checked = false;
             rb_KHD.Checked = false;
         }
@@ -106,19 +109,19 @@ namespace C.PL.Forms.FrmSanpham2
             }
         }
 
-        private void dgv_Aophong_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_Mau_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
-            var doituongcellclick = _aophong[index];
-            _idcellclick = doituongcellclick.MaAoPhong;
-            txt_tenAophong.Text = doituongcellclick.TenAoPhong;
-            rb_HoatDong.Checked = doituongcellclick.TrangThaiAoPhong == true;
-            rb_KHD.Checked = doituongcellclick.TrangThaiAoPhong == false;
+            var doituongcellclick = _mau[index];
+            _idcellclick = doituongcellclick.MaMau;
+            txt_TenMau.Text = doituongcellclick.TenMau;
+            rb_HoatDong.Checked = doituongcellclick.TrangThaiMu == true;
+            rb_KHD.Checked = doituongcellclick.TrangThaiMu == false;
         }
 
-        private void FrmAoPhong_Load(object sender, EventArgs e)
+        private void FrmMauSac_Load(object sender, EventArgs e)
         {
-            loadaophong();
+            loadMau();
         }
     }
 }

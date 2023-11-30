@@ -68,6 +68,10 @@ namespace C.PL.Forms.FrmSanpham2
                 {
                     MessageBox.Show("Thông tin không được trống!!");
                 }
+                else if (_iSizeServices.checktrung(txtTenSize.Text))
+                {
+                    MessageBox.Show("Trùng tên. Hãy nhập tên khác.");
+                }
                 else
                 {
                     Size size = new Size()

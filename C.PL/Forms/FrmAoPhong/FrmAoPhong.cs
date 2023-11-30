@@ -13,30 +13,30 @@ using System.Windows.Forms;
 
 namespace C.PL.Forms.FrmSanpham2
 {
-    public partial class FrmChatLieu : Form
+    public partial class FrmAoPhong : Form
     {
-        ChatLieuServices _chatlieuServices = new();
-        List<ChatLieu> _chatlieu = new();
+        AoPhongServices _aophongServices = new();
+        List<AoPhong> _aophong = new();
         Guid? _idcellclick = null;
-        public FrmChatLieu()
+        public FrmAoPhong()
         {
             InitializeComponent();
         }
-        public void loadchatlieu()
+        public void loadaophong()
         {
-            dgv_Chatlieu.Rows.Clear();
-            dgv_Chatlieu.ColumnCount = 3;
-            dgv_Chatlieu.Columns[0].Name = "Mã Chất liệu";
-            dgv_Chatlieu.Columns[1].Name = "Tên Chất liệu";
-            dgv_Chatlieu.Columns[2].Name = "Trạng thái Chất liệu";
+            dgv_Aophong.Rows.Clear();
+            dgv_Aophong.ColumnCount = 3;
+            dgv_Aophong.Columns[0].Name = "Mã Áo Phông";
+            dgv_Aophong.Columns[1].Name = "Tên Áo Phông";
+            dgv_Aophong.Columns[2].Name = "Trạng thái Áo Phông";
 
-            _chatlieu = _chatlieuServices.GetAll();
-            foreach (var item in _chatlieu)
+            _aophong = _aophongServices.GetAll();
+            foreach (var item in _aophong)
             {
-                dgv_Chatlieu.Rows.Add(
-                    item.MaChatLieu,
-                    item.TenChatLieu,
-                    item.TrangThaiChatLieu == true ? "Còn hàng" : "Hết hàng");
+                dgv_Aophong.Rows.Add(
+                    item.MaAoPhong,
+                    item.TenAoPhong,
+                    item.TrangThaiAoPhong == true ? "Còn Hàng" : "Hét Hàng");
             }
         }
         private void btn_them_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace C.PL.Forms.FrmSanpham2
             DialogResult result = MessageBox.Show("Bạn có muốn thêm không ?", "Thông báo", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                if (txt_chatlieu.Text == "")
+                if (txt_tenAophong.Text == "")
                 {
                     MessageBox.Show("Thông tin không được trống!!");
                 }
@@ -52,16 +52,20 @@ namespace C.PL.Forms.FrmSanpham2
                 {
                     MessageBox.Show("Thông tin không được trống!!");
                 }
+                else if (_aophongServices.checktrung(txt_tenAophong.Text))
+                {
+                    MessageBox.Show("Trùng tên. Hãy nhập tên khác.");
+                }
                 else
                 {
-                    ChatLieu chatLieu = new ChatLieu()
+                    AoPhong aoPhong = new AoPhong()
                     {
-                        MaChatLieu = Guid.NewGuid(),
-                        TenChatLieu = txt_chatlieu.Text,
-                        TrangThaiChatLieu = rb_HoatDong.Checked,
+                        MaAoPhong = Guid.NewGuid(),
+                        TenAoPhong = txt_tenAophong.Text,
+                        TrangThaiAoPhong = rb_HoatDong.Checked,
                     };
-                    _chatlieuServices.Add(chatLieu);
-                    loadchatlieu();
+                    _aophongServices.Add(aoPhong);
+                    loadaophong();
                     MessageBox.Show("Thêm thành công");
                 }
             }
@@ -74,12 +78,12 @@ namespace C.PL.Forms.FrmSanpham2
             {
                 if (_idcellclick != null)
                 {
-                    var resultDelete = _chatlieuServices.Detele((Guid)_idcellclick);
+                    var resultDelete = _aophongServices.Detele((Guid)_idcellclick);
 
                     if (resultDelete)
                     {
                         MessageBox.Show("Xóa thành công");
-                        loadchatlieu();
+                        loadaophong();
                     }
                     else
                     {
@@ -91,7 +95,8 @@ namespace C.PL.Forms.FrmSanpham2
 
         private void btn_lamMoi_Click(object sender, EventArgs e)
         {
-            txt_chatlieu.Text = "";
+
+            txt_tenAophong.Text = "";
             rb_HoatDong.Checked = false;
             rb_KHD.Checked = false;
         }
@@ -105,19 +110,19 @@ namespace C.PL.Forms.FrmSanpham2
             }
         }
 
-        private void dgv_Chatlieu_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_Aophong_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
-            var doituongcellclick = _chatlieu[index];
-            _idcellclick = doituongcellclick.MaChatLieu;
-            txt_chatlieu.Text = doituongcellclick.TenChatLieu;
-            rb_HoatDong.Checked = doituongcellclick.TrangThaiChatLieu == true;
-            rb_KHD.Checked = doituongcellclick.TrangThaiChatLieu == false;
+            var doituongcellclick = _aophong[index];
+            _idcellclick = doituongcellclick.MaAoPhong;
+            txt_tenAophong.Text = doituongcellclick.TenAoPhong;
+            rb_HoatDong.Checked = doituongcellclick.TrangThaiAoPhong == true;
+            rb_KHD.Checked = doituongcellclick.TrangThaiAoPhong == false;
         }
 
-        private void FrmChatLieu_Load(object sender, EventArgs e)
+        private void FrmAoPhong_Load(object sender, EventArgs e)
         {
-            loadchatlieu();
+            loadaophong();
         }
     }
 }

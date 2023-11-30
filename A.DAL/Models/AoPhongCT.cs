@@ -11,6 +11,7 @@ namespace A.DAL.Models
     public class AoPhongCT
     {
         [Key] public Guid MaAoPhongCT { get; set; }
+
         public int SoLuong { get; set; }
         public double GiaNhap { get; set; }
         public double GiaBan { get; set; }

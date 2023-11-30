@@ -28,6 +28,18 @@ namespace A.DAL.Repositories
             }
         }
 
+        public bool checktrung(string ten)
+        {
+            var obj = _dbContext.maus.FirstOrDefault(c => c.TenMau == ten);
+
+            if (obj == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public bool Detele(Guid id)
         {
             try

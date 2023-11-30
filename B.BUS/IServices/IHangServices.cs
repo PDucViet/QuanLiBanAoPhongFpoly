@@ -15,5 +15,7 @@ namespace B.BUS.IServices
         List<HangSX> GetAll();
 
         HangSX? Getbyid(Guid id);
+
+        bool checktrung(string ten);
     }
 }

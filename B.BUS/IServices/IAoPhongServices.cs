@@ -15,5 +15,6 @@ namespace B.BUS.IServices
         List<AoPhong> GetAll();
 
         AoPhong? Getbyid(Guid id);
+        bool checktrung(string ten);
     }
 }

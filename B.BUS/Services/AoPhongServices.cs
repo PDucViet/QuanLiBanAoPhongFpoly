@@ -12,10 +12,19 @@ namespace B.BUS.Services
 {
     public class AoPhongServices : IAoPhongServices
     {
-        IAoPhongRepositories iaophongrepo = new AoPhongRepositories();
+        private IAoPhongRepositories iaophongrepo ;
+        public AoPhongServices() 
+        {
+            iaophongrepo = new AoPhongRepositories();
+        }
         public bool Add(AoPhong aoPhong)
         {
             return iaophongrepo.Add(aoPhong);
+        }
+
+        public bool checktrung(string ten)
+        {
+            return iaophongrepo.checktrung(ten);
         }
 
         public bool Detele(Guid id)

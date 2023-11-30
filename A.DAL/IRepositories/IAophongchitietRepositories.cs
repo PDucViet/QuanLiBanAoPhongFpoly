@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace A.DAL.IRepositories
 {
-    public interface IMauSacrepositories
+    public interface IAophongchitietRepositories
     {
-        bool Add(Mau mau);
+        bool Add(AoPhongCT aoPhongCT);
         bool Detele(Guid id);
-        bool Update(Guid id, Mau mau);
-        List<Mau> GetAll();
+        bool Update(Guid id, AoPhongCT aoPhongCT);
+        List<AoPhongCT> GetAll();
 
-        Mau? Getbyid(Guid id);
-        bool checktrung(string ten);
+        AoPhongCT? Getbyid(Guid id);
     }
 }
