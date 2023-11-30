@@ -16,5 +16,7 @@ namespace A.DAL.IRepositories
         List<AoPhong> GetAll();
 
         AoPhong? Getbyid(Guid id);
+
+        bool checktrung(string ten);
     }
 }

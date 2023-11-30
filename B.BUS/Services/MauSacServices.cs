@@ -18,6 +18,11 @@ namespace B.BUS.Services
             return imaurepo.Add(mau);
         }
 
+        public bool checktrung(string ten)
+        {
+            return imaurepo.checktrung(ten);
+        }
+
         public bool Detele(Guid id)
         {
             return imaurepo.Detele(id);

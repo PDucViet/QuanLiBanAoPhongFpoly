@@ -29,13 +29,13 @@
     <Compile Update="Forms\FrmNhanVien.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Update="Forms\FrmSanpham2\FrmAoPhong.cs">
+    <Compile Update="Forms\FrmAoPhong\FrmAoPhong.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Update="Forms\FrmSanpham2\FrmChatLieu.cs">
+    <Compile Update="Forms\FrmAoPhong\FrmChatLieu.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Update="Forms\FrmSanpham2\FrmMauSac.cs">
+    <Compile Update="Forms\FrmAoPhong\FrmMauSac.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Update="Properties\Resources.Designer.cs">

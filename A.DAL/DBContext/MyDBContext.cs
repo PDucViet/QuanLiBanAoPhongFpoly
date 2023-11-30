@@ -12,7 +12,7 @@ namespace A.DAL.DBContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=QuanLiBanAoPhongDB;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Server= DESKTOP\\SQLEXPRESS;Database=Duan1Nhom6;Trusted_Connection=True;TrustServerCertificate=True;");
         }
         public DbSet<ChucVu>chucVus { get; set; }
         public DbSet<NhanVien> nhanViens { get; set; }

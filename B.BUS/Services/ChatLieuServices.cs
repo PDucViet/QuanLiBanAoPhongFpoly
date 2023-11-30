@@ -18,6 +18,11 @@ namespace B.BUS.Services
             return ichatlieurepo.Add(chatLieu);
         }
 
+        public bool checktrung(string ten)
+        {
+            return ichatlieurepo.checktrung(ten);
+        }
+
         public bool Detele(Guid id)
         {
             return ichatlieurepo.Detele(id);

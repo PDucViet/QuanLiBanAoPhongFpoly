@@ -19,6 +19,11 @@ namespace B.BUS.Services
             return isizerepo.Add(size);
         }
 
+        public bool checktrung(string ten)
+        {
+            return isizerepo.checktrung(ten);
+        }
+
         public bool Detele(Guid id)
         {
             return isizerepo.Detele(id);

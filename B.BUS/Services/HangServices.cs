@@ -18,6 +18,11 @@ namespace B.BUS.Services
             return ihangrepo.Add(hangSX);
         }
 
+        public bool checktrung(string ten)
+        {
+            return ihangrepo.checktrung(ten);
+        }
+
         public bool Detele(Guid id)
         {
             return ihangrepo.Detele(id);

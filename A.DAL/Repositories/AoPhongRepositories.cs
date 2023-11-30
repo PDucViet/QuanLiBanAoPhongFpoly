@@ -5,13 +5,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace A.DAL.Repositories
 {
     public class AoPhongRepositories : IAoPhongRepositories
     {
-        MyDBContext _dbContext = new MyDBContext();
+        private MyDBContext _dbContext;
+        private List<AoPhong> _lstaophong;
+        public AoPhongRepositories()
+        {
+            _lstaophong = new List<AoPhong>();
+            _dbContext = new MyDBContext();
+        }
 
         public bool Add(AoPhong aoPhong)
         {
@@ -26,6 +33,18 @@ namespace A.DAL.Repositories
 
                 return false;
             }
+        }
+
+        public bool checktrung(string ten)
+        {
+            var obj = _dbContext.aoPhongs.FirstOrDefault(c => c.TenAoPhong == ten);
+
+            if (obj == null)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public bool Detele(Guid id)
@@ -46,7 +65,8 @@ namespace A.DAL.Repositories
 
         public List<AoPhong> GetAll()
         {
-            return _dbContext.aoPhongs.ToList();
+            _lstaophong = _dbContext.aoPhongs.ToList();
+            return _lstaophong;
         }
 
         public AoPhong? Getbyid(Guid id)

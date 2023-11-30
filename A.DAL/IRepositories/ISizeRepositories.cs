@@ -15,5 +15,7 @@ namespace A.DAL.IRepositories
         List<Size> GetAll();
 
         Size? Getbyid(Guid id);
+
+        bool checktrung(string ten);
     }
 }

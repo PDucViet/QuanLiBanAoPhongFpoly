@@ -27,6 +27,18 @@ namespace A.DAL.Repositories
             }
         }
 
+        public bool checktrung(string ten)
+        {
+            var obj = _dbContext.sizes.FirstOrDefault(c => c.TenSize == ten);
+
+            if (obj == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public bool Detele(Guid id)
         {
             try

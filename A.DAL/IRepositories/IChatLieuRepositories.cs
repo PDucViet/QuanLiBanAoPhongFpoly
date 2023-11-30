@@ -15,5 +15,7 @@ namespace A.DAL.IRepositories
         List<ChatLieu> GetAll();
 
         ChatLieu? Getbyid(Guid id);
+
+        bool checktrung(string ten);
     }
 }
