@@ -50,6 +50,7 @@
             label3 = new Label();
             label2 = new Label();
             groupBox2 = new GroupBox();
+            btn_clear = new Button();
             btnThoat = new Button();
             btnCapNhat = new Button();
             btnThem = new Button();
@@ -268,6 +269,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(btn_clear);
             groupBox2.Controls.Add(btnThoat);
             groupBox2.Controls.Add(btnCapNhat);
             groupBox2.Controls.Add(btnThem);
@@ -278,21 +280,34 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Chức năng";
             // 
+            // btn_clear
+            // 
+            btn_clear.Image = (Image)resources.GetObject("btn_clear.Image");
+            btn_clear.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_clear.Location = new Point(9, 183);
+            btn_clear.Name = "btn_clear";
+            btn_clear.Size = new Size(198, 52);
+            btn_clear.TabIndex = 3;
+            btn_clear.Text = "Clear";
+            btn_clear.UseVisualStyleBackColor = true;
+            btn_clear.Click += btn_clear_Click;
+            // 
             // btnThoat
             // 
             btnThoat.Image = (Image)resources.GetObject("btnThoat.Image");
             btnThoat.ImageAlign = ContentAlignment.MiddleLeft;
-            btnThoat.Location = new Point(6, 212);
+            btnThoat.Location = new Point(9, 251);
             btnThoat.Name = "btnThoat";
             btnThoat.Size = new Size(198, 52);
             btnThoat.TabIndex = 3;
             btnThoat.Text = "Thoát";
             btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
             // 
             // btnCapNhat
             // 
             btnCapNhat.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCapNhat.Location = new Point(9, 133);
+            btnCapNhat.Location = new Point(9, 111);
             btnCapNhat.Name = "btnCapNhat";
             btnCapNhat.Size = new Size(198, 52);
             btnCapNhat.TabIndex = 1;
@@ -336,6 +351,7 @@
             dgvAoPhongchitiet.RowTemplate.Height = 29;
             dgvAoPhongchitiet.Size = new Size(1303, 290);
             dgvAoPhongchitiet.TabIndex = 3;
+            dgvAoPhongchitiet.CellClick += dgvAoPhongchitiet_CellClick;
             // 
             // label11
             // 
@@ -352,6 +368,7 @@
             txtTimKiem.Name = "txtTimKiem";
             txtTimKiem.Size = new Size(361, 27);
             txtTimKiem.TabIndex = 1;
+            txtTimKiem.TextChanged += txtTimKiem_TextChanged;
             // 
             // Column10
             // 
@@ -490,5 +507,6 @@
         private DataGridViewTextBoxColumn Column11;
         private DataGridViewTextBoxColumn Column9;
         private DataGridView dgvAoPhongchitiet;
+        private Button btn_clear;
     }
 }
