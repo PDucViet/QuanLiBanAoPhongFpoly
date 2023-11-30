@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace A.DAL.Migrations
 {
     [DbContext(typeof(MyDBContext))]
-    [Migration("20231127144331_OptimusPrime")]
-    partial class OptimusPrime
+    [Migration("20231127162323_SuaLaiLanN")]
+    partial class SuaLaiLanN
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -151,6 +151,10 @@ namespace A.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("GhiChu")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("GiamGia")
                         .HasColumnType("float");
 
@@ -250,9 +254,6 @@ namespace A.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ChucVuID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("ChucVuId")
                         .HasColumnType("uniqueidentifier");
 
@@ -291,7 +292,7 @@ namespace A.DAL.Migrations
 
                     b.HasKey("MaNV");
 
-                    b.HasIndex("ChucVuID");
+                    b.HasIndex("ChucVuId");
 
                     b.ToTable("nhanViens");
                 });
@@ -399,7 +400,7 @@ namespace A.DAL.Migrations
                 {
                     b.HasOne("A.DAL.Models.ChucVu", "ChucVu")
                         .WithMany("NhanVien")
-                        .HasForeignKey("ChucVuID")
+                        .HasForeignKey("ChucVuId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
