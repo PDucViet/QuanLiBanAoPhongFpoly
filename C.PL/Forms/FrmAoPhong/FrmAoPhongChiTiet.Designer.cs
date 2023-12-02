@@ -55,7 +55,7 @@
             btnCapNhat = new Button();
             btnThem = new Button();
             groupBox3 = new GroupBox();
-            dgvAoPhongchitiet = new DataGridView();
+            dgvDanhSachSp = new DataGridView();
             label11 = new Label();
             txtTimKiem = new TextBox();
             Column10 = new DataGridViewTextBoxColumn();
@@ -72,7 +72,7 @@
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvAoPhongchitiet).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDanhSachSp).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -332,7 +332,7 @@
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(dgvAoPhongchitiet);
+            groupBox3.Controls.Add(dgvDanhSachSp);
             groupBox3.Controls.Add(label11);
             groupBox3.Controls.Add(txtTimKiem);
             groupBox3.Location = new Point(12, 336);
@@ -342,16 +342,16 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Danh sách sản phẩm";
             // 
-            // dgvAoPhongchitiet
+            // dgvDanhSachSp
             // 
-            dgvAoPhongchitiet.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAoPhongchitiet.Location = new Point(6, 52);
-            dgvAoPhongchitiet.Name = "dgvAoPhongchitiet";
-            dgvAoPhongchitiet.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dgvAoPhongchitiet.RowTemplate.Height = 29;
-            dgvAoPhongchitiet.Size = new Size(1303, 290);
-            dgvAoPhongchitiet.TabIndex = 3;
-            dgvAoPhongchitiet.CellClick += dgvAoPhongchitiet_CellClick;
+            dgvDanhSachSp.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDanhSachSp.Location = new Point(6, 52);
+            dgvDanhSachSp.Name = "dgvDanhSachSp";
+            dgvDanhSachSp.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dgvDanhSachSp.RowTemplate.Height = 29;
+            dgvDanhSachSp.Size = new Size(1303, 290);
+            dgvDanhSachSp.TabIndex = 3;
+            dgvDanhSachSp.CellClick += dgvDanhSachSp_CellClick;
             // 
             // label11
             // 
@@ -462,7 +462,7 @@
             groupBox2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvAoPhongchitiet).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDanhSachSp).EndInit();
             ResumeLayout(false);
         }
 
@@ -506,7 +506,7 @@
         private DataGridViewTextBoxColumn Column8;
         private DataGridViewTextBoxColumn Column11;
         private DataGridViewTextBoxColumn Column9;
-        private DataGridView dgvAoPhongchitiet;
+        private DataGridView dgvDanhSachSp;
         private Button btn_clear;
     }
 }

@@ -49,40 +49,53 @@ namespace C.PL.Forms
         private void btnThem_Click(object sender, EventArgs e)
         {
             var list = (from x in _ikhachHangServices.GetAll() orderby x.TenKH select x).ToList();
+            bool check = false;
+
             DialogResult result = MessageBox.Show("Bạn có muốn thêm không ?", "Thông báo", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                //foreach (var x in list)
-                //{
-                    if (txtTenKhachHang.Text == "" || txtDiaChi.Text == "" || txtSDT.Text == "")
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i].TenKH == txtTenKhachHang.Text && list[i].SdtKH == txtSDT.Text && list[i].DiaChiKH == txtDiaChi.Text)
                     {
-                        MessageBox.Show("Thông tin không được trống!!");
-                    }
-                    else if (Validates.CheckSDT(txtSDT.Text) == false)
-                    {
-                        MessageBox.Show("Sai SDT!!");
-                    }
-                    //else if (x.TenKH == txtTenKhachHang.Text && x.DiaChiKH == txtDiaChi.Text && x.SdtKH == txtSDT.Text)
-                    //{
-                    //    MessageBox.Show("Thông tin khách hàng đã tồn tại!!");
-                    //}
-                    else
-                    {
-                        KhachHang khachHang = new KhachHang()
-                        {
-                            MaKH = Guid.NewGuid(),
-                            TenKH = txtTenKhachHang.Text,
-                            DiaChiKH = txtDiaChi.Text,
-                            SdtKH = txtSDT.Text,
-                            GioiTinhKH = rbNam.Checked == true ? true : false,
-                        };
-                        _ikhachHangServices.Add(khachHang);
-                        FrmKhachHang_Load(sender, e);
-                        MessageBox.Show("Thêm thành công");
+                        MessageBox.Show("Thông tin khách hàng đã tồn tại!!");
+                        check = true;
+                        break;
                     }
                 }
+                if (txtTenKhachHang.Text == "" || txtDiaChi.Text == "" || txtSDT.Text == "")
+                {
+                    MessageBox.Show("Thông tin không được trống!!");
+                    check = true;
+                    return;
+                }
+                else if (Validates.CheckSDT(txtSDT.Text) == false)
+                {
+                    MessageBox.Show("Sai SDT!!");
+                    check = true;
+                    return;
+                }
+
+                else if (check)
+                {
+                    return;
+                }
+
+                KhachHang khachHang = new KhachHang()
+                {
+                    MaKH = Guid.NewGuid(),
+                    TenKH = txtTenKhachHang.Text,
+                    DiaChiKH = txtDiaChi.Text,
+                    SdtKH = txtSDT.Text,
+                    GioiTinhKH = rbNam.Checked == true ? true : false,
+                };
+                _ikhachHangServices.Add(khachHang);
+                FrmKhachHang_Load(sender, e);
+                MessageBox.Show("Thêm thành công");
 
             }
+
+        }
 
         private void dgvKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -105,39 +118,45 @@ namespace C.PL.Forms
         {
             var list = (from x in _ikhachHangServices.GetAll() orderby x.TenKH select x).ToList();
             var tt = (from y in list where y.MaKH == Guid.Parse(txtMaKhachHang.Text) select y).FirstOrDefault();
-            foreach (var x in list)
+            bool check = false;
+            DialogResult result = MessageBox.Show("Bạn có muốn thêm không ?", "Thông báo", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
             {
-                if (x.TenKH == txtTenKhachHang.Text && x.DiaChiKH == txtDiaChi.Text && x.SdtKH == txtSDT.Text)
+                for (int i = 0; i < list.Count; i++)
                 {
-                    MessageBox.Show("Thông tin khách hàng đã tồn tại!!");
-                }
-                else
-                {
-
+                    if (list[i].TenKH == txtTenKhachHang.Text && list[i].SdtKH == txtSDT.Text && list[i].DiaChiKH == txtDiaChi.Text)
+                    {
+                        MessageBox.Show("Thông tin khách hàng đã tồn tại!!");
+                        check = true;
+                        break;
+                    }
                 }
                 if (txtTenKhachHang.Text == "" || txtDiaChi.Text == "" || txtSDT.Text == "")
                 {
                     MessageBox.Show("Thông tin không được trống!!");
+                    check = true;
+                    return;
                 }
                 else if (Validates.CheckSDT(txtSDT.Text) == false)
                 {
                     MessageBox.Show("Sai SDT!!");
+                    check = true;
+                    return;
                 }
-                
-                else
+
+                else if (check)
                 {
-                    
-                    tt.TenKH = txtTenKhachHang.Text;
-                    tt.DiaChiKH = txtDiaChi.Text;
-                    tt.SdtKH = txtSDT.Text;
-                    tt.GioiTinhKH = rbNam.Checked == true ? true : false;
-                    _ikhachHangServices.Update(tt);
-                    FrmKhachHang_Load(sender, e);
-                    MessageBox.Show("Sửa thành công.");
+                    return;
                 }
+                tt.TenKH = txtTenKhachHang.Text;
+                tt.DiaChiKH = txtDiaChi.Text;
+                tt.SdtKH = txtSDT.Text;
+                tt.GioiTinhKH = rbNam.Checked == true ? true : false;
+                _ikhachHangServices.Update(tt);
+                FrmKhachHang_Load(sender, e);
+                MessageBox.Show("Sửa thành công.");
             }
         }
-
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
             var lists = (from x in _ikhachHangServices.GetAll() where x.TenKH.StartsWith($"{txtTimKiem}") select x).ToList();
