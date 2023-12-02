@@ -34,7 +34,7 @@ namespace C.PL.Forms.FrmDangNhap
             bool check = false;
             foreach (var item in lst)
             {
-                if (item.TaiKhoanNV == txtUser.Text && item.MatKhauNV == txtPassWord.Text)
+                if (item.TaiKhoanNV == txtUser.Text && item.MatKhauNV == txtPassWord.Text&&item.TrangThai == true)
                 {
                     if (item.ChucVuId == ql)
                     {
@@ -47,7 +47,7 @@ namespace C.PL.Forms.FrmDangNhap
                     else if (item.ChucVuId == nv)
                     {
                         MessageBox.Show("Bạn đăng nhập với tư cách nhân viên");
-                        FormNhanVien f = new FormNhanVien();
+                        FrmNhanVien f = new FrmNhanVien();
                         f.ShowDialog();
                         check = true;
                         break;

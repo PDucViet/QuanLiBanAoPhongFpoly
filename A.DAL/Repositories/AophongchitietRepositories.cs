@@ -63,23 +63,12 @@ namespace A.DAL.Repositories
             return obj;
         }
 
-        public bool Update(Guid id, AoPhongCT aoPhongCT)
+        public bool Update(AoPhongCT aoPhongCT)
         {
             try
-            {
-                var obj = Getbyid(id);
-                if (obj == null)
-                {
-                    return false;
-                }
+            {             
 
-                obj.MaAoPhongCT = aoPhongCT.MaAoPhongCT;
-                obj.GiaNhap = aoPhongCT.GiaNhap;
-                obj.GiaBan = aoPhongCT.GiaBan;
-                obj.SoLuong = aoPhongCT.SoLuong;
-                obj.TrangThaiAoPhongCT = aoPhongCT.TrangThaiAoPhongCT;
-
-                _dbContext.Update(obj);
+                _dbContext.Update(aoPhongCT);
                 _dbContext.SaveChanges();
 
                 return true;

@@ -70,9 +70,20 @@ namespace A.DAL.Repositories
 
         public bool Update(Guid id, HangSX hangSX)
         {
-            _dbContext.Update(id);
-            _dbContext.SaveChanges();
-            return true;
+            try
+            {
+                var doituong = _dbContext.hangSXes.FirstOrDefault(c => c.MaHSX == id);
+                if (doituong == null) return false;
+                doituong.TenHSX = hangSX.TenHSX;
+                doituong.TrangThaiHSX = hangSX.TrangThaiHSX;
+                _dbContext.hangSXes.Update(doituong);
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

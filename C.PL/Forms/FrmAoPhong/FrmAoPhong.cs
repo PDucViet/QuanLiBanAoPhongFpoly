@@ -71,27 +71,6 @@ namespace C.PL.Forms.FrmSanpham2
             }
         }
 
-        private void btn_Xoa_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Bạn có muốn xóa không ?", "Thông báo", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                if (_idcellclick != null)
-                {
-                    var resultDelete = _aophongServices.Detele((Guid)_idcellclick);
-
-                    if (resultDelete)
-                    {
-                        MessageBox.Show("Xóa thành công");
-                        loadaophong();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Xóa thất bại");
-                    }
-                }
-            }
-        }
 
         private void btn_lamMoi_Click(object sender, EventArgs e)
         {
@@ -113,6 +92,10 @@ namespace C.PL.Forms.FrmSanpham2
         private void dgv_Aophong_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
+            if (index < 0 || index >= _aophong.Count)
+            {
+                return;
+            }
             var doituongcellclick = _aophong[index];
             _idcellclick = doituongcellclick.MaAoPhong;
             txt_tenAophong.Text = doituongcellclick.TenAoPhong;
@@ -123,6 +106,31 @@ namespace C.PL.Forms.FrmSanpham2
         private void FrmAoPhong_Load(object sender, EventArgs e)
         {
             loadaophong();
+        }
+
+        private void btn_Sua_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có muốn sửa không ?", "Thông báo", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+
+                var resultsua = _aophongServices.Update((Guid)_idcellclick, new AoPhong()
+                {
+                    TenAoPhong = txt_tenAophong.Text,
+                    TrangThaiAoPhong = rb_HoatDong.Checked
+                });
+
+                if (resultsua)
+                {
+                    MessageBox.Show("Sửa thành công");
+                    loadaophong();
+                }
+                else
+                {
+                    MessageBox.Show("Sửa thất bại");
+                }
+
+            }
         }
     }
 }

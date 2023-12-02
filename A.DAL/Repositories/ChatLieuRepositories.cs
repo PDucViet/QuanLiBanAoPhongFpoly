@@ -69,9 +69,20 @@ namespace A.DAL.Repositories
 
         public bool Update(Guid id, ChatLieu chatLieu)
         {
-            _dbContext.Update(id);
-            _dbContext.SaveChanges();
-            return true;
+            try
+            {
+                var doituong = _dbContext.chatLieus.FirstOrDefault(c => c.MaChatLieu == id);
+                if (doituong == null) return false;
+                doituong.TenChatLieu = chatLieu.TenChatLieu;
+                doituong.TrangThaiChatLieu = chatLieu.TrangThaiChatLieu;
+                _dbContext.chatLieus.Update(doituong);
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }   
         }
     }
 }
