@@ -42,43 +42,67 @@ namespace C.PL.Views
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            var list = (from x in _ichucVuServices.GetAll() select x).ToList();
+            bool check = false;
             DialogResult result = MessageBox.Show("Bạn có muốn thêm không ?", "Thông báo", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i].TenChucVu == txtTenChucVu.Text)
+                    {
+                        MessageBox.Show("Thông tin khách hàng đã tồn tại!!");
+                        check = true;
+                        break;
+                    }
+                }
                 if (txtTenChucVu.Text == "")
                 {
                     MessageBox.Show("Thông tin không được trống!!");
+                    check = true;
+                    return;
                 }
-                else
+
+                ChucVu chucVu = new ChucVu()
                 {
-                    ChucVu chucVu = new ChucVu()
-                    {
-                        MaChucVu = Guid.NewGuid(),
-                        TenChucVu = txtTenChucVu.Text,
-                    };
-                    _ichucVuServices.Add(chucVu);
-                    frmChucVu_Load(sender, e); MessageBox.Show("Thêm thành công");
-                }
+                    MaChucVu = Guid.NewGuid(),
+                    TenChucVu = txtTenChucVu.Text,
+                };
+                _ichucVuServices.Add(chucVu);
+                frmChucVu_Load(sender, e);
+                MessageBox.Show("Thêm thành công");
+
             }
         }
 
-            private void btnSua_Click(object sender, EventArgs e)
+        private void btnSua_Click(object sender, EventArgs e)
         {
+            var list = (from x in _ichucVuServices.GetAll() select x).ToList();
+            bool check = false;
             DialogResult result = MessageBox.Show("Bạn có muốn sửa không ?", "Thông báo", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                if (txtTenChucVu.Text == null)
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i].TenChucVu == txtTenChucVu.Text)
+                    {
+                        MessageBox.Show("Thông tin khách hàng đã tồn tại!!");
+                        check = true;
+                        break;
+                    }
+                }
+                if (txtTenChucVu.Text == "")
                 {
                     MessageBox.Show("Thông tin không được trống!!");
+                    check = true;
+                    return;
                 }
-                else
-                {
-                    var chucvu = (from x in _ichucVuServices.GetAll() where x.MaChucVu == Guid.Parse(txtMaChucVu.Text) select x).FirstOrDefault();
-                    chucvu.TenChucVu = txtTenChucVu.Text;
-                    _ichucVuServices.Update(chucvu);
-                    frmChucVu_Load(sender, e);
-                    MessageBox.Show("Sửa thành công.");
-                }
+                var chucvu = (from x in _ichucVuServices.GetAll() where x.MaChucVu == Guid.Parse(txtMaChucVu.Text) select x).FirstOrDefault();
+                chucvu.TenChucVu = txtTenChucVu.Text;
+                _ichucVuServices.Update(chucvu);
+                frmChucVu_Load(sender, e);
+                MessageBox.Show("Sửa thành công.");
             }
         }
 

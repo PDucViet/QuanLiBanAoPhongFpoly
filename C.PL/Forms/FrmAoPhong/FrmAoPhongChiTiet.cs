@@ -88,21 +88,21 @@ namespace C.PL.Views
         }
         public void loadDuLieu()
         {
-            dgvAoPhongchitiet.Rows.Clear();
-            dgvAoPhongchitiet.ColumnCount = 10;
-            dgvAoPhongchitiet.Columns[0].Name = "Mã Áo Phông";
-            dgvAoPhongchitiet.Columns[1].Name = "Tên Áo Phông";
-            dgvAoPhongchitiet.Columns[2].Name = "Giá Nhập";
-            dgvAoPhongchitiet.Columns[3].Name = "Giá Bán";
-            dgvAoPhongchitiet.Columns[4].Name = "Số Lượng";
-            dgvAoPhongchitiet.Columns[5].Name = "Màu Sắc";
-            dgvAoPhongchitiet.Columns[6].Name = "Size";
-            dgvAoPhongchitiet.Columns[7].Name = "HangSX";
-            dgvAoPhongchitiet.Columns[8].Name = "Chất liệu";
-            dgvAoPhongchitiet.Columns[9].Name = "Trạng Thái Áo Phông CT";
+            dgvDanhSachSp.Rows.Clear();
+            dgvDanhSachSp.ColumnCount = 10;
+            dgvDanhSachSp.Columns[0].Name = "Mã Áo Phông";
+            dgvDanhSachSp.Columns[1].Name = "Tên Áo Phông";
+            dgvDanhSachSp.Columns[2].Name = "Giá Nhập";
+            dgvDanhSachSp.Columns[3].Name = "Giá Bán";
+            dgvDanhSachSp.Columns[4].Name = "Số Lượng";
+            dgvDanhSachSp.Columns[5].Name = "Màu Sắc";
+            dgvDanhSachSp.Columns[6].Name = "Size";
+            dgvDanhSachSp.Columns[7].Name = "HangSX";
+            dgvDanhSachSp.Columns[8].Name = "Chất liệu";
+            dgvDanhSachSp.Columns[9].Name = "Trạng Thái Áo Phông CT";
             foreach (var item in _aophongchitietServices.getViewAophongCT())
             {
-                dgvAoPhongchitiet.Rows.Add(
+                dgvDanhSachSp.Rows.Add(
                     item.aoPhongCTs.MaAoPhongCT,
                     item.aoPhongs.TenAoPhong,
                     item.aoPhongCTs.GiaNhap,
