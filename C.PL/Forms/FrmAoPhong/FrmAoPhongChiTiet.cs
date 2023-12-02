@@ -272,12 +272,12 @@ namespace C.PL.Views
             }
         }
 
-        private void dgvAoPhongchitiet_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvDanhSachSp_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
-            if (index >= 0 || index <= dgvAoPhongchitiet.RowCount)
+            if (index >= 0 || index <= dgvDanhSachSp.RowCount)
             {
-                DataGridViewRow row = dgvAoPhongchitiet.Rows[index];
+                DataGridViewRow row = dgvDanhSachSp.Rows[index];
                 cbaophong.Text = row.Cells[1].Value.ToString();
                 txtGiaNhap.Text = row.Cells[2].Value.ToString();
                 txtGiaBan.Text = row.Cells[3].Value.ToString();
@@ -300,14 +300,14 @@ namespace C.PL.Views
 
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
-            dgvAoPhongchitiet.Rows.Clear();
+            dgvDanhSachSp.Rows.Clear();
             foreach (var item in _aophongchitietServices.getViewAophongCT().Where(x => x.aoPhongs.TenAoPhong.ToLower().Contains(txtTimKiem.Text)
             || x.maus.TenMau.ToLower().Contains(txtTimKiem.Text) || x.hangSXes.TenHSX.ToLower().Contains(txtTimKiem.Text)
             || x.sizes.TenSize.ToLower().Contains(txtTimKiem.Text) || x.chatLieus.TenChatLieu.ToLower().Contains(txtTimKiem.Text)
             || Convert.ToString(x.aoPhongCTs.MaAoPhongCT).Contains(txtTimKiem.Text)))
             {
 
-                dgvAoPhongchitiet.Rows.Add(
+                dgvDanhSachSp.Rows.Add(
                     item.aoPhongCTs.MaAoPhongCT,
                     item.aoPhongs.TenAoPhong,
                     item.aoPhongCTs.GiaNhap,

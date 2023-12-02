@@ -344,14 +344,14 @@
             // 
             // dgvDanhSachSp
             // 
-            dgvAoPhongchitiet.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAoPhongchitiet.Location = new Point(6, 52);
-            dgvAoPhongchitiet.Name = "dgvAoPhongchitiet";
-            dgvAoPhongchitiet.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dgvAoPhongchitiet.RowTemplate.Height = 29;
-            dgvAoPhongchitiet.Size = new Size(1303, 290);
-            dgvAoPhongchitiet.TabIndex = 3;
-            dgvAoPhongchitiet.CellClick += dgvAoPhongchitiet_CellClick;
+            dgvDanhSachSp.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDanhSachSp.Location = new Point(6, 52);
+            dgvDanhSachSp.Name = "dgvDanhSachSp";
+            dgvDanhSachSp.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dgvDanhSachSp.RowTemplate.Height = 29;
+            dgvDanhSachSp.Size = new Size(1303, 290);
+            dgvDanhSachSp.TabIndex = 3;
+            dgvDanhSachSp.CellClick += dgvDanhSachSp_CellClick;
             // 
             // label11
             // 
@@ -506,7 +506,7 @@
         private DataGridViewTextBoxColumn Column8;
         private DataGridViewTextBoxColumn Column11;
         private DataGridViewTextBoxColumn Column9;
-        private DataGridView dgvAoPhongchitiet;
+        private DataGridView dgvDanhSachSp;
         private Button btn_clear;
     }
 }

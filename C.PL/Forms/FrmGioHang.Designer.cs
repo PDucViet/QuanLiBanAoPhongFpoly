@@ -32,13 +32,32 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvDanhSachSp = new System.Windows.Forms.DataGridView();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnThem = new System.Windows.Forms.Button();
             this.btnThanhToan = new System.Windows.Forms.Button();
             this.btnXoaGioHang = new System.Windows.Forms.Button();
             this.btnTruSoLuong = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.dgvGioHang = new System.Windows.Forms.DataGridView();
+            this.maSanPhamGH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenSanPhamGH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.giaBanGH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soLuongGH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.thanhTienGH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mauSacGH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sizeGH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hangSXGH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chatLieuGH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtTienKhachDua = new System.Windows.Forms.TextBox();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
@@ -98,12 +117,88 @@
             // dgvDanhSachSp
             // 
             this.dgvDanhSachSp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDanhSachSp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column10});
             this.dgvDanhSachSp.Location = new System.Drawing.Point(6, 59);
             this.dgvDanhSachSp.Name = "dgvDanhSachSp";
             this.dgvDanhSachSp.RowHeadersWidth = 51;
             this.dgvDanhSachSp.RowTemplate.Height = 29;
+            this.dgvDanhSachSp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDanhSachSp.Size = new System.Drawing.Size(970, 243);
             this.dgvDanhSachSp.TabIndex = 7;
+            this.dgvDanhSachSp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSachSp_CellClick);
+            this.dgvDanhSachSp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSachSp_CellContentClick);
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Mã sản phẩm";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 125;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Tên sản phẩm";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 125;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Giá bán";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 125;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Số lượng";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 125;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Màu sắc";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 125;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Size";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 125;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "HangSX";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
+            this.Column8.Width = 125;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Chất liệu";
+            this.Column9.MinimumWidth = 6;
+            this.Column9.Name = "Column9";
+            this.Column9.Width = 125;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Trạng Thái Áo Phông CT";
+            this.Column10.MinimumWidth = 6;
+            this.Column10.Name = "Column10";
+            this.Column10.Width = 125;
             // 
             // txtTimKiem
             // 
@@ -116,6 +211,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnThem);
             this.groupBox1.Controls.Add(this.btnThanhToan);
             this.groupBox1.Controls.Add(this.btnXoaGioHang);
             this.groupBox1.Controls.Add(this.btnTruSoLuong);
@@ -128,51 +224,138 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Giỏ hàng";
             // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(156, 227);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(135, 55);
+            this.btnThem.TabIndex = 13;
+            this.btnThem.Text = "Thêm số lượng";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
             // btnThanhToan
             // 
-            this.btnThanhToan.Location = new System.Drawing.Point(576, 227);
+            this.btnThanhToan.Location = new System.Drawing.Point(607, 227);
             this.btnThanhToan.Name = "btnThanhToan";
-            this.btnThanhToan.Size = new System.Drawing.Size(166, 55);
+            this.btnThanhToan.Size = new System.Drawing.Size(135, 55);
             this.btnThanhToan.TabIndex = 12;
             this.btnThanhToan.Text = "Thanh toán";
             this.btnThanhToan.UseVisualStyleBackColor = true;
             // 
             // btnXoaGioHang
             // 
-            this.btnXoaGioHang.Location = new System.Drawing.Point(384, 227);
+            this.btnXoaGioHang.Location = new System.Drawing.Point(457, 227);
             this.btnXoaGioHang.Name = "btnXoaGioHang";
-            this.btnXoaGioHang.Size = new System.Drawing.Size(166, 55);
+            this.btnXoaGioHang.Size = new System.Drawing.Size(135, 55);
             this.btnXoaGioHang.TabIndex = 11;
             this.btnXoaGioHang.Text = "Xóa giỏ hàng";
             this.btnXoaGioHang.UseVisualStyleBackColor = true;
+            this.btnXoaGioHang.Click += new System.EventHandler(this.btnXoaGioHang_Click);
             // 
             // btnTruSoLuong
             // 
-            this.btnTruSoLuong.Location = new System.Drawing.Point(194, 227);
+            this.btnTruSoLuong.Location = new System.Drawing.Point(305, 227);
             this.btnTruSoLuong.Name = "btnTruSoLuong";
-            this.btnTruSoLuong.Size = new System.Drawing.Size(166, 55);
+            this.btnTruSoLuong.Size = new System.Drawing.Size(135, 55);
             this.btnTruSoLuong.TabIndex = 10;
             this.btnTruSoLuong.Text = "Trừ số lượng(-1)";
             this.btnTruSoLuong.UseVisualStyleBackColor = true;
+            this.btnTruSoLuong.Click += new System.EventHandler(this.btnTruSoLuong_Click);
             // 
             // btnXoa
             // 
             this.btnXoa.Location = new System.Drawing.Point(6, 227);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(166, 55);
+            this.btnXoa.Size = new System.Drawing.Size(135, 55);
             this.btnXoa.TabIndex = 9;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // dgvGioHang
             // 
             this.dgvGioHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGioHang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.maSanPhamGH,
+            this.TenSanPhamGH,
+            this.giaBanGH,
+            this.soLuongGH,
+            this.thanhTienGH,
+            this.mauSacGH,
+            this.sizeGH,
+            this.hangSXGH,
+            this.chatLieuGH});
             this.dgvGioHang.Location = new System.Drawing.Point(6, 26);
             this.dgvGioHang.Name = "dgvGioHang";
             this.dgvGioHang.RowHeadersWidth = 51;
+            this.dgvGioHang.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvGioHang.RowTemplate.Height = 29;
             this.dgvGioHang.Size = new System.Drawing.Size(736, 195);
             this.dgvGioHang.TabIndex = 8;
+            // 
+            // maSanPhamGH
+            // 
+            this.maSanPhamGH.HeaderText = "Mã sản phẩm";
+            this.maSanPhamGH.MinimumWidth = 6;
+            this.maSanPhamGH.Name = "maSanPhamGH";
+            this.maSanPhamGH.Width = 6;
+            // 
+            // TenSanPhamGH
+            // 
+            this.TenSanPhamGH.HeaderText = "Tên sản phẩm";
+            this.TenSanPhamGH.MinimumWidth = 6;
+            this.TenSanPhamGH.Name = "TenSanPhamGH";
+            this.TenSanPhamGH.Width = 200;
+            // 
+            // giaBanGH
+            // 
+            this.giaBanGH.HeaderText = "Giá bán";
+            this.giaBanGH.MinimumWidth = 6;
+            this.giaBanGH.Name = "giaBanGH";
+            this.giaBanGH.Width = 150;
+            // 
+            // soLuongGH
+            // 
+            this.soLuongGH.HeaderText = "Số lượng";
+            this.soLuongGH.MinimumWidth = 6;
+            this.soLuongGH.Name = "soLuongGH";
+            this.soLuongGH.Width = 125;
+            // 
+            // thanhTienGH
+            // 
+            this.thanhTienGH.HeaderText = "Thành tiền";
+            this.thanhTienGH.MinimumWidth = 6;
+            this.thanhTienGH.Name = "thanhTienGH";
+            this.thanhTienGH.Width = 175;
+            // 
+            // mauSacGH
+            // 
+            this.mauSacGH.HeaderText = "Màu sắc";
+            this.mauSacGH.MinimumWidth = 6;
+            this.mauSacGH.Name = "mauSacGH";
+            this.mauSacGH.Width = 125;
+            // 
+            // sizeGH
+            // 
+            this.sizeGH.HeaderText = "Size";
+            this.sizeGH.MinimumWidth = 6;
+            this.sizeGH.Name = "sizeGH";
+            this.sizeGH.Width = 125;
+            // 
+            // hangSXGH
+            // 
+            this.hangSXGH.HeaderText = "HangSX";
+            this.hangSXGH.MinimumWidth = 6;
+            this.hangSXGH.Name = "hangSXGH";
+            this.hangSXGH.Width = 125;
+            // 
+            // chatLieuGH
+            // 
+            this.chatLieuGH.HeaderText = "Chất liệu";
+            this.chatLieuGH.MinimumWidth = 6;
+            this.chatLieuGH.Name = "chatLieuGH";
+            this.chatLieuGH.Width = 125;
             // 
             // groupBox3
             // 
@@ -480,5 +663,24 @@
         private Label label4;
         private Label label3;
         private ComboBox cbbSDT;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn Column7;
+        private DataGridViewTextBoxColumn Column8;
+        private DataGridViewTextBoxColumn Column9;
+        private DataGridViewTextBoxColumn Column10;
+        private DataGridViewTextBoxColumn maSanPhamGH;
+        private DataGridViewTextBoxColumn TenSanPhamGH;
+        private DataGridViewTextBoxColumn giaBanGH;
+        private DataGridViewTextBoxColumn soLuongGH;
+        private DataGridViewTextBoxColumn thanhTienGH;
+        private DataGridViewTextBoxColumn mauSacGH;
+        private DataGridViewTextBoxColumn sizeGH;
+        private DataGridViewTextBoxColumn hangSXGH;
+        private DataGridViewTextBoxColumn chatLieuGH;
+        private Button btnThem;
     }
 }
