@@ -38,8 +38,7 @@ namespace C.PL.Forms
         }
         public void loadDuLieu()
         {
-            dgvDanhSachSp.Columns[0].Visible = false;
-            dgvGioHang.Columns[0].Visible = false;
+
             dgvDanhSachSp.Rows.Clear();
             dgvDanhSachSp.ColumnCount = 10;
             dgvDanhSachSp.Columns[0].Name = "Mã Áo Phông";
@@ -110,23 +109,26 @@ namespace C.PL.Forms
 
                     if (dgvGioHang.Rows[i].Cells[0].Value == dgvDanhSachSp.Rows[e.RowIndex].Cells[0].Value)
                     {
-                        MessageBox.Show("Bạn đã thêm sản phẩm này vào giỏ hàng");
+                        dgvGioHang.Rows[i].Cells[3].Value = 1 + int.Parse(dgvGioHang.Rows[i].Cells[3].Value.ToString());
+                        dgvGioHang.Rows[i].Cells[4].Value = int.Parse(dgvGioHang.Rows[i].Cells[3].Value.ToString()) * int.Parse(dgvDanhSachSp.Rows[e.RowIndex].Cells[2].Value.ToString());
                         return;
                     }
-                    return;
+
 
                 }
                 dgvGioHang.Rows.Add(
                    dgvDanhSachSp.Rows[e.RowIndex].Cells[0].Value,
                    dgvDanhSachSp.Rows[e.RowIndex].Cells[1].Value,
                    dgvDanhSachSp.Rows[e.RowIndex].Cells[2].Value,
-                          int.Parse(""),
+                          int.Parse("1"),
                    dgvDanhSachSp.Rows[e.RowIndex].Cells[2].Value,
                    dgvDanhSachSp.Rows[e.RowIndex].Cells[4].Value,
                    dgvDanhSachSp.Rows[e.RowIndex].Cells[5].Value,
                    dgvDanhSachSp.Rows[e.RowIndex].Cells[6].Value,
                    dgvDanhSachSp.Rows[e.RowIndex].Cells[7].Value,
-                   dgvDanhSachSp.Rows[e.RowIndex].Cells[8].Value
+                   dgvDanhSachSp.Rows[e.RowIndex].Cells[8].Value,
+                  "-", "X"
+
                    );
             }
             else
@@ -137,15 +139,15 @@ namespace C.PL.Forms
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            int sl = int.Parse(dgvGioHang.SelectedRows[0].Cells[3].Value.ToString());
-            var id = Guid.Parse(dgvGioHang.SelectedRows[0].Cells[0].Value.ToString());
-            if (sl < _aophongchitietServices.getViewAophongCT().Where(x => x.aoPhongCTs.AoPhongId == id).Select(s => s.aoPhongCTs.SoLuong).First())
-            {
-                sl++;
-                dgvGioHang.SelectedRows[0].Cells[3].Value = sl;
-                float dongia = float.Parse(dgvGioHang.SelectedRows[0].Cells[2].Value.ToString());
-                dgvGioHang.SelectedRows[0].Cells[4].Value = float.Parse(sl.ToString()) * dongia;
-            }
+            //int sl = int.Parse(dgvGioHang.SelectedRows[0].Cells[3].Value.ToString());
+            //var id = Guid.Parse(dgvGioHang.SelectedRows[0].Cells[0].Value.ToString());
+            //if (sl < _aophongchitietServices.getViewAophongCT().Where(x => x.aoPhongCTs.AoPhongId == id).Select(s => s.aoPhongCTs.SoLuong).First())
+            //{
+            //    sl++;
+            //    dgvGioHang.SelectedRows[0].Cells[3].Value = sl;
+            //    float dongia = float.Parse(dgvGioHang.SelectedRows[0].Cells[2].Value.ToString());
+            //    dgvGioHang.SelectedRows[0].Cells[4].Value = float.Parse(sl.ToString()) * dongia;
+            //}
         }
 
         private void btnXoaGioHang_Click(object sender, EventArgs e)
@@ -162,24 +164,56 @@ namespace C.PL.Forms
             DialogResult result = MessageBox.Show("Bạn có muốn xóa sản phẩm này khỏi giỏ hàng không ?", "Thông báo", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                foreach (DataGridViewRow x in dgvGioHang.SelectedRows)
-                {
-                    dgvGioHang.Rows.Remove(x);
-                }
+                //foreach (DataGridViewRow x in dgvGioHang.SelectedRows)
+                //{
+                //    dgvGioHang.Rows.RemoveAt(x.Index);
+                //}
             }
-            }
+        }
 
         private void btnTruSoLuong_Click(object sender, EventArgs e)
         {
-            int sl = int.Parse(dgvGioHang.SelectedRows[0].Cells[3].Value.ToString());
-            if (sl > 1)
+            //for (int i = 0; i < dgvGioHang.RowCount - 1; i++)
+            //{
+            //    int sl = int.Parse(dgvGioHang.SelectedRows[i].Cells[2].Value.ToString());
+            //    if (sl > 1)
+            //    {
+            //        sl--;
+            //    }
+            //    else MessageBox.Show("Số lượng không thể nhỏ hơn 1");
+            //    dgvGioHang.SelectedRows[i].Cells[2].Value = sl;
+            //    float dongia = float.Parse(dgvGioHang.SelectedRows[0].Cells[2].Value.ToString());
+            //    dgvGioHang.SelectedRows[0].Cells[4].Value = float.Parse(sl.ToString()) * dongia;
+            //}
+            //for (int i = 0; i < dgvGioHang.RowCount - 1; i++)
+            //{
+
+            //    if (dgvGioHang.Rows[e.row].
+            //    {
+
+            //    }
+            //    dgvGioHang.SelectedRows.ToString();
+            //}
+        }
+        private void dgvGioHang_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 10)
             {
-                sl--;
+                if (int.Parse(dgvGioHang.Rows[e.RowIndex].Cells[3].Value.ToString()) > 1)
+                {
+                    dgvGioHang.Rows[e.RowIndex].Cells[3].Value = int.Parse(dgvGioHang.Rows[e.RowIndex].Cells[3].Value.ToString()) - 1;
+                }
+                else MessageBox.Show("Số lượng không thể nhỏ hơn 1");
             }
-            else MessageBox.Show("Số lượng không thể nhỏ hơn 1");
-            dgvGioHang.SelectedRows[0].Cells[3].Value = sl;
-            float dongia = float.Parse(dgvGioHang.SelectedRows[0].Cells[2].Value.ToString());
-            dgvGioHang.SelectedRows[0].Cells[4].Value = float.Parse(sl.ToString()) * dongia;
+            if (e.ColumnIndex == 11)
+            {
+                foreach (DataGridViewRow item in this.dgvGioHang.SelectedCells)
+                {
+                    dgvGioHang.Rows.RemoveAt(item.Index);
+                }
+
+
+            }
         }
     }
 }
