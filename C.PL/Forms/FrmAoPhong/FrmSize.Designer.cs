@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSize));
             groupBox1 = new GroupBox();
             rb_KHD = new RadioButton();
             rb_HoatDong = new RadioButton();
@@ -147,7 +146,6 @@
             // 
             // btn_thoat
             // 
-            btn_thoat.Image = (Image)resources.GetObject("btn_thoat.Image");
             btn_thoat.ImageAlign = ContentAlignment.MiddleLeft;
             btn_thoat.Location = new Point(176, 104);
             btn_thoat.Name = "btn_thoat";
@@ -159,7 +157,6 @@
             // 
             // btn_lamMoi
             // 
-            btn_lamMoi.Image = (Image)resources.GetObject("btn_lamMoi.Image");
             btn_lamMoi.ImageAlign = ContentAlignment.MiddleLeft;
             btn_lamMoi.Location = new Point(21, 104);
             btn_lamMoi.Name = "btn_lamMoi";

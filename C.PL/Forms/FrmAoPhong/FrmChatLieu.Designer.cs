@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmChatLieu));
             groupBox3 = new GroupBox();
             dgv_Chatlieu = new DataGridView();
             groupBox2 = new GroupBox();
@@ -95,7 +94,6 @@
             // 
             // btn_lamMoi
             // 
-            btn_lamMoi.Image = (Image)resources.GetObject("btn_lamMoi.Image");
             btn_lamMoi.ImageAlign = ContentAlignment.MiddleLeft;
             btn_lamMoi.Location = new Point(21, 104);
             btn_lamMoi.Name = "btn_lamMoi";

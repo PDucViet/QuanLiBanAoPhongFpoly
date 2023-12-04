@@ -294,8 +294,6 @@ namespace C.PL.Views
                 return;
             }
             
-
-
         }
 
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
