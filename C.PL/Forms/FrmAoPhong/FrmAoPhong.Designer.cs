@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAoPhong));
             groupBox3 = new GroupBox();
             dgv_Aophong = new DataGridView();
             groupBox2 = new GroupBox();
@@ -84,18 +83,17 @@
             // 
             // btn_thoat
             // 
-            btn_thoat.ImageAlign = ContentAlignment.MiddleLeft;
             btn_thoat.Location = new Point(176, 104);
             btn_thoat.Name = "btn_thoat";
             btn_thoat.Size = new Size(138, 50);
-            btn_thoat.TabIndex = 3;
+            btn_thoat.TabIndex = 2;
             btn_thoat.Text = "Thoát";
+            btn_thoat.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_thoat.UseVisualStyleBackColor = true;
             btn_thoat.Click += btn_thoat_Click;
             // 
             // btn_lamMoi
             // 
-            btn_lamMoi.Image = (Image)resources.GetObject("btn_lamMoi.Image");
             btn_lamMoi.ImageAlign = ContentAlignment.MiddleLeft;
             btn_lamMoi.Location = new Point(21, 104);
             btn_lamMoi.Name = "btn_lamMoi";
@@ -107,7 +105,6 @@
             // 
             // btn_Sua
             // 
-            btn_Sua.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Sua.Location = new Point(176, 35);
             btn_Sua.Name = "btn_Sua";
             btn_Sua.Size = new Size(138, 50);
@@ -118,12 +115,12 @@
             // 
             // btn_them
             // 
-            btn_them.ImageAlign = ContentAlignment.MiddleLeft;
             btn_them.Location = new Point(21, 36);
             btn_them.Name = "btn_them";
             btn_them.Size = new Size(138, 50);
             btn_them.TabIndex = 0;
             btn_them.Text = "Thêm";
+            btn_them.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_them.UseVisualStyleBackColor = true;
             btn_them.Click += btn_them_Click;
             // 

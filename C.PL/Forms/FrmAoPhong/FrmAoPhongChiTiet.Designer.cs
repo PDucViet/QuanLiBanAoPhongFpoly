@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAoPhongChiTiet));
             groupBox1 = new GroupBox();
             cbaophong = new ComboBox();
             cbChatLieu = new ComboBox();
@@ -282,7 +281,6 @@
             // 
             // btn_clear
             // 
-            btn_clear.Image = (Image)resources.GetObject("btn_clear.Image");
             btn_clear.ImageAlign = ContentAlignment.MiddleLeft;
             btn_clear.Location = new Point(9, 183);
             btn_clear.Name = "btn_clear";
@@ -294,7 +292,6 @@
             // 
             // btnThoat
             // 
-            btnThoat.Image = (Image)resources.GetObject("btnThoat.Image");
             btnThoat.ImageAlign = ContentAlignment.MiddleLeft;
             btnThoat.Location = new Point(9, 251);
             btnThoat.Name = "btnThoat";
@@ -319,13 +316,11 @@
             // 
             btnThem.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnThem.BackgroundImageLayout = ImageLayout.Center;
-            btnThem.Image = (Image)resources.GetObject("btnThem.Image");
             btnThem.Location = new Point(9, 44);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(198, 52);
             btnThem.TabIndex = 0;
             btnThem.Text = "Thêm";
-            btnThem.TextAlign = ContentAlignment.MiddleRight;
             btnThem.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
